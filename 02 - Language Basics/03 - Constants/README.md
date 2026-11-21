@@ -101,7 +101,7 @@ Both `const` and `static` values do not change, but they have different purposes
 
 Use `const` for ordinary configuration values and simple named limits. Learn `static` separately when working with global state or program-wide storage.
 
-## 7. Practice
+## Practice
 
 1. Declare a constant for the number of seconds in a minute.
 2. Use it to calculate the number of seconds in an hour.
