@@ -1,29 +1,17 @@
 # Variables
 
-Variables hold values that a Rust program can use. Create a variable with `let`. Rust bindings are immutable by default, which makes accidental changes easier to prevent.
+Variables are named bindings that let a Rust program keep and use values. This lesson covers declaration, use, naming, and type annotations. Mutability and shadowing have dedicated lessons so the same material is not repeated here.
 
 ## Contents
 
-1. [Create a variable](#create-a-variable)
-2. [Use a variable](#use-a-variable)
-3. [Immutability by default](#immutability-by-default)
-4. [Make a variable mutable](#make-a-variable-mutable)
-5. [Add a type annotation](#add-a-type-annotation)
-6. [Variable scope](#variable-scope)
+1. [Declare and use a variable](#declare-and-use-a-variable)
+2. [Naming bindings](#naming-bindings)
+3. [Type annotations](#type-annotations)
+4. [Next lessons](#next-lessons)
 
-## Create a variable
+## Declare and use a variable
 
-Use `let` followed by a name and a value:
-
-```rust
-let name = "John";
-```
-
-The compiler infers that `name` is a string slice because of the value assigned to it.
-
-## Use a variable
-
-Pass variables to `println!` with formatting placeholders:
+Use `let` to create a binding, then use its name in an expression:
 
 ```rust
 fn main() {
@@ -34,53 +22,20 @@ fn main() {
 }
 ```
 
-Output:
+Rust usually infers each binding's type from its value. Captured formatting such as `{name}` inserts the value into the output.
 
-```text
-John is 30 years old.
-```
+## Naming bindings
 
-Formatting arguments are matched with their placeholders. Keep the values and placeholders in the intended order.
-
-## Immutability by default
-
-An ordinary binding cannot be assigned a new value after it is created:
-
-```rust,compile_fail
-fn main() {
-    let score = 5;
-    score = 10; // Error: cannot assign twice to an immutable variable
-}
-```
-
-This default protects values from changes that were not intended by the programmer.
-
-## Make a variable mutable
-
-Add `mut` when a binding needs to change:
+Use clear `snake_case` names that describe the value. A binding must be declared before it is used, and each name follows Rust's normal scope rules.
 
 ```rust
-fn main() {
-    let mut score = 5;
-    println!("Before: {score}");
-
-    score = 10;
-    println!("After: {score}");
-}
+let first_name = "John";
+let account_balance = 1250;
 ```
 
-Output:
+## Type annotations
 
-```text
-Before: 5
-After: 10
-```
-
-Use mutability only when the value must change. The separate `mut` keyword makes that decision visible in the code.
-
-## Add a type annotation
-
-Rust can infer many types, but an annotation makes the intended type explicit:
+Add `: Type` after a name when the intended type should be explicit or inference needs help:
 
 ```rust
 fn main() {
@@ -91,44 +46,14 @@ fn main() {
 }
 ```
 
-The type is written after the variable name and a colon.
+The annotation does not convert a value; it tells the compiler which type the binding must have. Type conversion is covered in [Type Conversion](<../07 - Type Conversion/README.md>).
 
-## Variable scope
+## Next lessons
 
-A variable is available from the point where it is declared until the end of its scope:
-
-```rust
-fn main() {
-    let message = "outside";
-
-    {
-        let inner_message = "inside";
-        println!("{message} and {inner_message}");
-    }
-
-    // `inner_message` is no longer available here.
-}
-```
-
-Inner scopes can use names from their outer scopes. Outer scopes cannot use bindings declared inside an inner scope.
-
-## Quick reference
-
-| Syntax | Meaning |
-| --- | --- |
-| `let value = 10;` | Create an immutable binding. |
-| `let mut value = 10;` | Create a mutable binding. |
-| `let value: i32 = 10;` | Create a binding with an explicit type. |
-| `println!("{value}");` | Print a variable with captured formatting. |
-
-## Practice
-
-1. Create variables for a name, age, and score.
-2. Print them in one sentence.
-3. Try changing an immutable variable and read the compiler error.
-4. Add `mut` and run the program again.
-5. Move one variable into an inner scope and observe where it can be used.
+- [Mutability](<../02 - Mutability/README.md>) — change a binding with `mut`.
+- [Constants](<../03 - Constants/README.md>) — define named compile-time values with `const`.
+- [Shadowing](<../04 - Shadowing/README.md>) — create a new binding with an existing name.
 
 ## Source reference
 
-This lesson was informed by the [W3Schools Rust Variables tutorial](https://www.w3schools.com/rust/rust_variables.php) and expanded with Rust-specific guidance on type annotations and scope.
+This lesson was informed by the [W3Schools Rust Variables tutorial](https://www.w3schools.com/rust/rust_variables.php) and expanded with Rust-specific guidance.
