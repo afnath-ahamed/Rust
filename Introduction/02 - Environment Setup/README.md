@@ -185,3 +185,7 @@ The extension adds essential Rust development features to VS Code, including:
 
 > [!NOTE]
 > No additional Rust extensions are required at this stage. The official `rust-analyzer` extension provides the core language support needed for learning and developing Rust in VS Code.
+
+## Next step
+
+Continue with [Your First Rust Program](<../03 - First Rust Program/README.md>) to build and run a complete Cargo project.
