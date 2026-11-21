@@ -131,4 +131,4 @@ flowchart LR
 
 ## Next step
 
-Continue with the [Windows environment setup guide](<../Environment Setup/README.md>) to install the required build tools, Rustup, and VS Code support.
+Continue with the [Windows environment setup guide](<../02 - Environment Setup/README.md>) to install the required build tools, Rustup, and VS Code support.
