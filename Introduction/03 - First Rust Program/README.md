@@ -71,3 +71,7 @@ Hello, Rust!
 | `cargo build --release` | Create an optimized build under `target/release/`. |
 | `cargo fmt` | Format the source code. |
 | `cargo clippy` | Check the code and suggest improvements. |
+
+## Next step
+
+Continue with [Rust Language Basics](<../../Language Basics/README.md>) to learn variables, data types, functions, and control flow.
