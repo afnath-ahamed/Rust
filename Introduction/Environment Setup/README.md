@@ -54,6 +54,9 @@ For standard Windows development, use the stable MSVC toolchain.
 
 When the installer displays the available options, press **Enter** to choose option `1` and continue with the standard installation.
 
+> [!TIP]
+> 🟢 Select **Option 1 — Proceed with standard installation**, then press **Enter**.
+
 ```text
 The Cargo home directory is located at:
 
@@ -82,5 +85,5 @@ Current installation options:
 1) Proceed with standard installation (default - just press enter)
 2) Customize installation
 3) Cancel installation
->
+> 1
 ```
