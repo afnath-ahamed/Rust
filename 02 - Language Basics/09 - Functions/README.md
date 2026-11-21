@@ -1,20 +1,23 @@
 # Functions
 
-Functions group reusable behavior behind a name. A function can accept typed parameters, compute a result, and return that result to its caller. Rust checks every argument and return type at compile time.
+Functions group reusable behavior behind a name. They define a clear boundary for inputs, outputs, scope, and errors while Rust checks every type at compile time.
 
 ## Contents
 
-1. [Define and call a function](#1-define-and-call-a-function)
-2. [Parameters](#2-parameters)
+1. [Define and call functions](#1-define-and-call-functions)
+2. [Parameters and arguments](#2-parameters-and-arguments)
 3. [Return values](#3-return-values)
 4. [Statements and expressions](#4-statements-and-expressions)
-5. [Scope inside functions](#5-scope-inside-functions)
-6. [Useful function patterns](#6-useful-function-patterns)
-7. [Best practices](#7-best-practices)
+5. [Function scope](#5-function-scope)
+6. [Ownership at function boundaries](#6-ownership-at-function-boundaries)
+7. [Borrowing parameters](#7-borrowing-parameters)
+8. [Closures](#8-closures)
+9. [Error-returning functions](#9-error-returning-functions)
+10. [Best practices](#10-best-practices)
 
-## 1. Define and call a function
+## 1. Define and call functions
 
-Declare a function with `fn`, a name, parentheses, and a body. The `main` function is the program's entry point:
+Declare a function with `fn`, a name, parentheses, and a body. `main` is the program's entry point:
 
 ```rust
 fn greet() {
@@ -26,11 +29,11 @@ fn main() {
 }
 ```
 
-Rust uses `snake_case` for function names. A function must be defined or otherwise available before it is called; Rust does not require a particular order in the source file.
+Use descriptive `snake_case` names. Rust does not require a function to appear before its call in the source file.
 
-## 2. Parameters
+## 2. Parameters and arguments
 
-Each parameter needs a name and an explicit type. Multiple parameters are separated by commas:
+Each parameter requires a name and an explicit type. Arguments must match those types:
 
 ```rust
 fn print_profile(name: &str, age: u32) {
@@ -42,24 +45,19 @@ fn main() {
 }
 ```
 
-The argument types must match the parameter types. Rust does not automatically convert values at a function call; convert them explicitly when necessary.
+Rust does not implicitly convert an argument. Convert it explicitly before calling the function when necessary.
 
 ## 3. Return values
 
-Write `-> Type` after the parameter list to declare a return type. The final expression becomes the return value when it has no semicolon:
+Write `-> Type` after the parameter list. The final expression is returned when it has no semicolon:
 
 ```rust
 fn add(left: i32, right: i32) -> i32 {
     left + right
 }
-
-fn main() {
-    let total = add(2, 3);
-    println!("{total}");
-}
 ```
 
-Use `return` for an early return:
+Use `return` for an early result:
 
 ```rust
 fn absolute(value: i32) -> i32 {
@@ -75,20 +73,20 @@ Functions without a useful result return the unit type `()`, usually written wit
 
 ## 4. Statements and expressions
 
-Rust distinguishes statements, which perform an action, from expressions, which produce a value. A semicolon turns most expressions into statements:
+Function bodies contain statements and may end with an expression. Statements perform actions; expressions evaluate to values:
 
 ```rust
 fn square(value: i32) -> i32 {
     let result = value * value; // statement
-    result                     // expression returned from the function
+    result                     // final expression and return value
 }
 ```
 
-See [Expressions and Statements](<../10 - Expressions and Statements/README.md>) for the full rule set.
+See [Expressions and Statements](<../10 - Expressions and Statements/README.md>) for the complete explanation.
 
-## 5. Scope inside functions
+## 5. Function scope
 
-Parameters and local variables are available only inside the function or block where they are declared:
+Parameters and local bindings are available only within their function or nested blocks:
 
 ```rust
 fn show_message() {
@@ -102,31 +100,58 @@ fn main() {
 }
 ```
 
-An inner block can use names from its outer block, but the outer block cannot use names declared inside the inner block. Ownership also determines whether a value is moved into a function or borrowed by it.
+An inner block can use names from its outer block, but an outer block cannot use names declared inside an inner block.
 
-## 6. Useful function patterns
+## 6. Ownership at function boundaries
 
-### Borrow instead of taking ownership
-
-Use a reference when a function only needs to read a value:
+Passing a value by value can move or copy it. Types such as `i32` implement `Copy`; an owned `String` is moved unless it is borrowed:
 
 ```rust
-fn length(text: &String) -> usize {
+fn take_text(text: String) {
+    println!("{text}");
+}
+
+fn main() {
+    let text = String::from("Rust");
+    take_text(text);
+    // `text` can no longer be used here because ownership moved.
+}
+```
+
+The complete ownership rules belong in a dedicated Ownership lesson. This section only explains how calls interact with ownership.
+
+## 7. Borrowing parameters
+
+Borrow with a reference when a function only needs to read a value. Use `&mut` when it must modify the caller's value:
+
+```rust
+fn length(text: &str) -> usize {
     text.len()
 }
-```
 
-In many APIs, `&str` is more flexible than `&String`:
-
-```rust
-fn announce(message: &str) {
-    println!("{message}");
+fn append_mark(text: &mut String) {
+    text.push('!');
 }
 ```
 
-### Return a `Result`
+References avoid transferring ownership, while Rust checks that they remain valid.
 
-Functions that can fail commonly return `Result<T, E>` so the caller must handle success or failure explicitly:
+## 8. Closures
+
+Closures are anonymous functions that can capture values from their surrounding scope. They use `||` around parameters:
+
+```rust
+let multiplier = 2;
+let double = |value| value * multiplier;
+
+println!("{}", double(5)); // 10
+```
+
+Closures are useful for short callbacks, iterator operations, and behavior passed into another function. Unlike named functions, they can capture local variables.
+
+## 9. Error-returning functions
+
+A function that can fail should return `Result<T, E>` so the caller handles success or failure explicitly:
 
 ```rust
 fn parse_count(text: &str) -> Result<u32, std::num::ParseIntError> {
@@ -134,26 +159,30 @@ fn parse_count(text: &str) -> Result<u32, std::num::ParseIntError> {
 }
 ```
 
-## 7. Best practices
+Use `Option<T>` when the result may be absent but there is no error detail. Use the `?` operator to propagate compatible errors from a function that returns `Result` or `Option`.
+
+## 10. Best practices
 
 - Give each function one clear responsibility.
 - Use descriptive names and precise parameter types.
 - Keep functions small enough to understand at a glance.
-- Prefer the final expression for simple returns.
 - Borrow data when the function does not need ownership.
-- Return `Result` for operations that can fail instead of hiding errors.
+- Return `Result` or `Option` instead of hiding failure.
+- Use closures for short, local behavior; use named functions for reusable behavior.
 
 ## Practice
 
 1. Write a function that prints a greeting.
-2. Create a function that accepts two numbers and returns their product.
+2. Create a function that returns the product of two numbers.
 3. Write a function that returns the larger of two values.
-4. Create a function that borrows a string slice and reports its length.
-5. Write a parsing function that returns a `Result<u32, _>`.
+4. Borrow a string slice and report its length.
+5. Pass a mutable `String` to a function that appends text.
+6. Create a closure that captures a local value.
+7. Write a parser that returns `Result<u32, _>`.
 
 ## Source references
 
-This lesson was informed by the [W3Schools Rust Functions tutorial](https://www.w3schools.com/rust/rust_functions.php) and [Rust Scope tutorial](https://www.w3schools.com/rust/rust_scope.php), then expanded with Rust-specific guidance on expressions, borrowing, and error-returning functions.
+This lesson was informed by the [W3Schools Rust Functions tutorial](https://www.w3schools.com/rust/rust_functions.php) and [Rust Scope tutorial](https://www.w3schools.com/rust/rust_scope.php), plus the official [Rust Book chapter on functions](https://doc.rust-lang.org/book/ch03-03-how-functions-work.html) and [ownership at function boundaries](https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html).
 
 ---
 
