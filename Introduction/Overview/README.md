@@ -105,11 +105,25 @@ flowchart LR
 
 ### What happens at each stage
 
-1. **Write Rust code.** Create `.rs` source files, commonly under `src/`.
-2. **Build with Cargo.** Cargo reads `Cargo.toml`, resolves dependencies, selects the target and build profile, and invokes `rustc`.
-3. **Compile and check with rustc.** The compiler parses the source, expands macros, checks types, and validates ownership, borrowing, and lifetimes.
-4. **Generate and link machine code.** The compiler optimizes the program, emits object code, and links the required libraries.
-5. **Produce an executable or library.** Cargo places the final artifact under `target/debug/` or `target/release/`.
+#### 1. Write Rust code
+
+Create `.rs` source files, commonly under `src/`.
+
+#### 2. Build with Cargo
+
+Cargo reads `Cargo.toml`, resolves dependencies, selects the target and build profile, and invokes `rustc`.
+
+#### 3. Compile and check with rustc
+
+The compiler parses the source, expands macros, checks types, and validates ownership, borrowing, and lifetimes.
+
+#### 4. Generate and link machine code
+
+The compiler optimizes the program, emits object code, and links the required libraries.
+
+#### 5. Produce an executable or library
+
+Cargo places the final artifact under `target/debug/` or `target/release/`.
 
 ### Common Cargo commands
 
