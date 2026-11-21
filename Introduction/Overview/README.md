@@ -2,8 +2,6 @@
 
 Rust is a compiled, statically typed programming language designed for performance, reliability, and memory safety. It gives developers low-level control while preventing many common memory and concurrency errors during compilation.
 
-![Visual overview of Rust, its ecosystem, use cases, and compilation process](./intro.png)
-
 ## Contents
 
 1. [What is Rust?](#what-is-rust)
