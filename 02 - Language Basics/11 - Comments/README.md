@@ -4,12 +4,12 @@ Comments explain code for people. Rust ignores ordinary comments when compiling 
 
 ## Contents
 
-1. [Line comments](#line-comments)
-2. [Block comments](#block-comments)
-3. [Documentation comments](#documentation-comments)
-4. [Practical guidance](#practical-guidance)
+1. [Line comments](#1-line-comments)
+2. [Block comments](#2-block-comments)
+3. [Documentation comments](#3-documentation-comments)
+4. [Practical guidance](#4-practical-guidance)
 
-## Line comments
+## 1. Line comments
 
 Start a line comment with `//`. Everything after `//` until the end of the line is ignored.
 
@@ -22,7 +22,7 @@ println!("Hello, Rust!"); // An end-of-line comment
 
 Use line comments for short explanations close to the code they describe.
 
-## Block comments
+## 2. Block comments
 
 Start a block comment with `/*` and end it with `*/`. Block comments can span multiple lines. Rust also supports nested block comments.
 
@@ -36,11 +36,11 @@ let answer = 6 * 7;
 
 Block comments are useful for temporarily describing or disabling a larger section while experimenting.
 
-## Documentation comments
+## 3. Documentation comments
 
 Documentation comments describe public items and are processed by `rustdoc`.
 
-### Item documentation with `///`
+### 3.1 Item documentation with `///`
 
 Use `///` immediately before a function, struct, enum, or other item.
 
@@ -51,7 +51,7 @@ fn add(left: i32, right: i32) -> i32 {
 }
 ```
 
-### Module or crate documentation with `//!`
+### 3.2 Module or crate documentation with `//!`
 
 Use `//!` at the beginning of a module or crate to document the module itself.
 
@@ -70,7 +70,7 @@ Markdown inside documentation comments is rendered by `rustdoc`. You can generat
 cargo doc --open
 ```
 
-## Practical guidance
+## 4. Practical guidance
 
 - Explain **why** a non-obvious decision exists, not what an immediately clear line does.
 - Keep comments close to the code they describe.
