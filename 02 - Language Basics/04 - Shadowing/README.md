@@ -121,7 +121,7 @@ Use shadowing when a value has a new meaning after transformation. Use `mut` whe
 - Avoid long chains of shadowing that make the active type unclear.
 - Remember that shadowing is not mutation and does not change an earlier binding.
 
-## 7. Quick reference
+## Quick reference
 
 ```rust
 let value = "42";
@@ -131,7 +131,7 @@ let mut count = 0;
 count += 1; // Same binding, updated value
 ```
 
-## 8. Practice
+## Practice
 
 1. Shadow a string with its trimmed version.
 2. Parse the trimmed string into an integer using another shadowing statement.
