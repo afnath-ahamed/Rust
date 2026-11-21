@@ -103,25 +103,24 @@ flowchart LR
     D --> E["5. Executable or library"]
 ```
 
-1. **Write Rust code:** Source code is stored in `.rs` files, commonly under `src/`.
-2. **Build with Cargo:** Cargo reads `Cargo.toml`, resolves the dependency graph, selects the requested targets and build profile, and invokes `rustc` as needed.
-3. **Compile and check with rustc:** The compiler parses the source, expands macros, checks types, and validates ownership, borrowing, and lifetimes.
-4. **Generate and link machine code:** The compiler optimizes the program, emits object code, and links the required libraries.
-5. **Produce an executable or library:** Cargo places the final build artifact under `target/debug/` or `target/release/`.
+### What happens at each stage
 
-Common Cargo commands:
+| Step | What happens |
+| --- | --- |
+| **1. Write Rust code** | Create `.rs` source files, commonly under `src/`. |
+| **2. Build with Cargo** | Cargo reads `Cargo.toml`, resolves dependencies, selects the target and build profile, and invokes `rustc`. |
+| **3. Compile and check with rustc** | The compiler parses the source, expands macros, checks types, and validates ownership, borrowing, and lifetimes. |
+| **4. Generate and link machine code** | The compiler optimizes the program, emits object code, and links the required libraries. |
+| **5. Produce an executable or library** | Cargo places the final artifact under `target/debug/` or `target/release/`. |
 
-```powershell
-cargo check
-cargo build
-cargo run
-cargo build --release
-```
+### Common Cargo commands
 
-- `cargo check` validates the project without producing the final executable.
-- `cargo build` creates a debug build.
-- `cargo run` builds and runs the project.
-- `cargo build --release` creates an optimized release build.
+| Command | Purpose |
+| --- | --- |
+| `cargo check` | Check the project without producing the final executable. |
+| `cargo build` | Create a debug build. |
+| `cargo run` | Build and run the project. |
+| `cargo build --release` | Create an optimized release build. |
 
 ## Next step
 
