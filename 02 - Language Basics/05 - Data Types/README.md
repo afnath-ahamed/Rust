@@ -4,17 +4,17 @@ Every Rust value has a type. The type tells the compiler which values are valid 
 
 ## Contents
 
-1. [Scalar types](#scalar-types)
-2. [Compound types](#compound-types)
-3. [Strings](#strings)
-4. [Type annotations and literals](#type-annotations-and-literals)
-5. [Choosing a type](#choosing-a-type)
+1. [Scalar types](#1-scalar-types)
+2. [Compound types](#2-compound-types)
+3. [Strings](#3-strings)
+4. [Type annotations and literals](#4-type-annotations-and-literals)
+5. [Choosing a type](#5-choosing-a-type)
 
-## Scalar types
+## 1. Scalar types
 
 Scalar types represent one value.
 
-### Integers
+### 1.1 Integers
 
 Integers store whole numbers. Signed types (`i8`, `i16`, `i32`, `i64`, `i128`, `isize`) support negative values; unsigned types (`u8`, `u16`, `u32`, `u64`, `u128`, `usize`) support zero and positive values. `i32` is a common default for integer literals.
 
@@ -24,7 +24,7 @@ let items: u32 = 25;
 let bytes: u8 = 255;
 ```
 
-### Floating-point numbers
+### 1.2 Floating-point numbers
 
 `f32` and `f64` represent decimal values. `f64` is the usual default because it provides greater precision.
 
@@ -32,7 +32,7 @@ let bytes: u8 = 255;
 let price: f64 = 19.99;
 ```
 
-### Boolean
+### 1.3 Boolean
 
 `bool` has exactly two values: `true` and `false`.
 
@@ -40,7 +40,7 @@ let price: f64 = 19.99;
 let is_ready: bool = true;
 ```
 
-### Character
+### 1.4 Character
 
 `char` stores one Unicode scalar value and uses single quotes. It can represent more than an ASCII letter.
 
@@ -49,11 +49,11 @@ let initial: char = 'R';
 let symbol: char = '★';
 ```
 
-## Compound types
+## 2. Compound types
 
 Compound types group multiple values into one value.
 
-### Tuples
+### 2.1 Tuples
 
 A tuple has a fixed length and may contain different types. Access elements by position, starting at zero, or destructure it:
 
@@ -64,7 +64,7 @@ println!("{}", profile.0);
 let (name, age, active) = profile;
 ```
 
-### Arrays
+### 2.2 Arrays
 
 An array has a fixed length, and every element has the same type. Its length is part of the type.
 
@@ -77,7 +77,7 @@ println!("{}", scores[0]);
 
 Indexing starts at zero. An invalid index causes a runtime panic, so validate dynamic indexes when necessary.
 
-## Strings
+## 3. Strings
 
 Rust commonly uses two string forms:
 
@@ -92,7 +92,7 @@ message.push_str(", Rust!");
 
 Use [Type Conversion](<../07 - Type Conversion/README.md>) when converting between textual and numeric values.
 
-## Type annotations and literals
+## 4. Type annotations and literals
 
 Write an annotation after the binding name when you want to make the type explicit:
 
@@ -110,7 +110,7 @@ let precise = 3.14f32;
 
 Rust does not silently mix numeric types. Convert values explicitly before combining them; see [Type Conversion](<../07 - Type Conversion/README.md>).
 
-## Choosing a type
+## 5. Choosing a type
 
 - Choose a signed integer when negative values are valid.
 - Choose an unsigned integer for non-negative counts, sizes, or indexes.
@@ -118,7 +118,7 @@ Rust does not silently mix numeric types. Convert values explicitly before combi
 - Use an array for a fixed-size collection and a `Vec<T>` for a growable collection.
 - Use `&str` for borrowed text and `String` when ownership or mutation is needed.
 
-## Practice
+## 6. Practice
 
 1. Declare one value for each scalar type.
 2. Create a tuple containing a name, age, and active flag.
