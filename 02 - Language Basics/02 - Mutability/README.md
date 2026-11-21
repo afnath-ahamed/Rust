@@ -115,7 +115,7 @@ Shadowing can change the type. Reassignment through `mut` cannot change the type
 - Read compiler errors carefully when a change violates type or borrowing rules.
 - Use meaningful names so the reason for changing a value is clear.
 
-## 7. Quick reference
+## Quick reference
 
 | Syntax | Meaning |
 | --- | --- |
@@ -124,7 +124,7 @@ Shadowing can change the type. Reassignment through `mut` cannot change the type
 | `value = 20;` | Reassign an existing mutable binding. |
 | `let value = value + 1;` | Shadow the previous binding with a new one. |
 
-## 8. Practice
+## Practice
 
 1. Create an immutable counter and try to increment it.
 2. Add `mut` and run the program again.
