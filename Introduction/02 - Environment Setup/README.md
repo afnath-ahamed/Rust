@@ -1,5 +1,18 @@
 # Environment Setup
 
+This guide prepares a Windows development environment for writing, building, and running Rust projects in Visual Studio Code. Complete the steps in order so each required tool is installed and verified before development begins.
+
+## Contents
+
+1. [Install Microsoft C++ Build Tools](#step-1)
+2. [Install Rust using Rustup](#step-2)
+3. [Verify the installation](#step-3)
+4. [Configure VS Code](#step-4)
+
+---
+
+<a id="step-1"></a>
+
 ## Step 1 — Install Microsoft C++ Build Tools
 
 ### Why is this required?
@@ -24,6 +37,8 @@ The installer should have the **Desktop development with C++** workload selected
 ![Visual Studio Installer with the Desktop development with C++ workload selected](./visual-studio-build-tools.png)
 
 ---
+
+<a id="step-2"></a>
 
 ## Step 2 — Install Rust using Rustup
 
@@ -90,6 +105,8 @@ Current installation options:
 
 ---
 
+<a id="step-3"></a>
+
 ## Step 3 — Verify the installation
 
 After installation, close and reopen PowerShell or your terminal so the updated `PATH` is loaded.
@@ -140,6 +157,8 @@ rustup show
 The output should show an active stable toolchain. On a standard 64-bit Intel or AMD Windows PC, the toolchain usually ends with `x86_64-pc-windows-msvc`.
 
 ---
+
+<a id="step-4"></a>
 
 ## Step 4 — Configure VS Code
 
