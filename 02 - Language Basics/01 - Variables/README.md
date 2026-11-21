@@ -4,12 +4,12 @@ Variables are named bindings that let a Rust program keep and use values. This l
 
 ## Contents
 
-1. [Declare and use a variable](#declare-and-use-a-variable)
-2. [Naming bindings](#naming-bindings)
-3. [Type annotations](#type-annotations)
-4. [Next lessons](#next-lessons)
+1. [Declare and use a variable](#1-declare-and-use-a-variable)
+2. [Naming bindings](#2-naming-bindings)
+3. [Type annotations](#3-type-annotations)
+4. [Next lessons](#4-next-lessons)
 
-## Declare and use a variable
+## 1. Declare and use a variable
 
 Use `let` to create a binding, then use its name in an expression:
 
@@ -24,7 +24,7 @@ fn main() {
 
 Rust usually infers each binding's type from its value. Captured formatting such as `{name}` inserts the value into the output.
 
-## Naming bindings
+## 2. Naming bindings
 
 Use clear `snake_case` names that describe the value. A binding must be declared before it is used, and each name follows Rust's normal scope rules.
 
@@ -33,7 +33,7 @@ let first_name = "John";
 let account_balance = 1250;
 ```
 
-## Type annotations
+## 3. Type annotations
 
 Add `: Type` after a name when the intended type should be explicit or inference needs help:
 
@@ -48,7 +48,7 @@ fn main() {
 
 The annotation does not convert a value; it tells the compiler which type the binding must have. Type conversion is covered in [Type Conversion](<../07 - Type Conversion/README.md>).
 
-## Next lessons
+## 4. Next lessons
 
 - [Mutability](<../02 - Mutability/README.md>) — change a binding with `mut`.
 - [Constants](<../03 - Constants/README.md>) — define named compile-time values with `const`.

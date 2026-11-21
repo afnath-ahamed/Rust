@@ -4,14 +4,14 @@ Rust variables are immutable by default. A binding can be changed only when it i
 
 ## Contents
 
-1. [Immutable bindings](#immutable-bindings)
-2. [Mutable bindings](#mutable-bindings)
-3. [What `mut` changes](#what-mut-changes)
-4. [Mutability and scope](#mutability-and-scope)
-5. [Mutability versus shadowing](#mutability-versus-shadowing)
-6. [Good practices](#good-practices)
+1. [Immutable bindings](#1-immutable-bindings)
+2. [Mutable bindings](#2-mutable-bindings)
+3. [What `mut` changes](#3-what-mut-changes)
+4. [Mutability and scope](#4-mutability-and-scope)
+5. [Mutability versus shadowing](#5-mutability-versus-shadowing)
+6. [Good practices](#6-good-practices)
 
-## Immutable bindings
+## 1. Immutable bindings
 
 Use `let` to create an immutable binding:
 
@@ -33,7 +33,7 @@ fn main() {
 
 The binding is not allowed to change after its initial assignment.
 
-## Mutable bindings
+## 2. Mutable bindings
 
 Add `mut` when the value must be reassigned:
 
@@ -56,7 +56,7 @@ After: 25°C
 
 The `mut` keyword applies to the binding. It permits assigning a new value of the same type to that binding.
 
-## What `mut` changes
+## 3. What `mut` changes
 
 `mut` allows reassignment, but it does not remove Rust's other safety checks:
 
@@ -72,7 +72,7 @@ fn main() {
 }
 ```
 
-## Mutability and scope
+## 4. Mutability and scope
 
 Mutability belongs to a particular binding and does not automatically apply to another binding:
 
@@ -92,7 +92,7 @@ fn main() {
 
 The mutable binding remains usable while its enclosing scope is active. A binding declared inside an inner scope is unavailable outside that scope.
 
-## Mutability versus shadowing
+## 5. Mutability versus shadowing
 
 Mutability changes the existing binding. Shadowing creates a new binding with the same name:
 
@@ -107,7 +107,7 @@ fn main() {
 
 Shadowing can change the type. Reassignment through `mut` cannot change the type of the existing binding.
 
-## Good practices
+## 6. Good practices
 
 - Start with immutable bindings and add `mut` only when reassignment is required.
 - Keep mutable state close to the code that updates it.
@@ -115,7 +115,7 @@ Shadowing can change the type. Reassignment through `mut` cannot change the type
 - Read compiler errors carefully when a change violates type or borrowing rules.
 - Use meaningful names so the reason for changing a value is clear.
 
-## Quick reference
+## 7. Quick reference
 
 | Syntax | Meaning |
 | --- | --- |
@@ -124,7 +124,7 @@ Shadowing can change the type. Reassignment through `mut` cannot change the type
 | `value = 20;` | Reassign an existing mutable binding. |
 | `let value = value + 1;` | Shadow the previous binding with a new one. |
 
-## Practice
+## 8. Practice
 
 1. Create an immutable counter and try to increment it.
 2. Add `mut` and run the program again.

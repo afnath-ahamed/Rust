@@ -4,14 +4,14 @@ Constants store values that do not change during the program's execution. Declar
 
 ## Contents
 
-1. [Declare a constant](#declare-a-constant)
-2. [Required type annotations](#required-type-annotations)
-3. [Naming conventions](#naming-conventions)
-4. [Use a constant](#use-a-constant)
-5. [Constants versus variables](#constants-versus-variables)
-6. [Constants versus static items](#constants-versus-static-items)
+1. [Declare a constant](#1-declare-a-constant)
+2. [Required type annotations](#2-required-type-annotations)
+3. [Naming conventions](#3-naming-conventions)
+4. [Use a constant](#4-use-a-constant)
+5. [Constants versus variables](#5-constants-versus-variables)
+6. [Constants versus static items](#6-constants-versus-static-items)
 
-## Declare a constant
+## 1. Declare a constant
 
 Use `const`, followed by an uppercase name, a type, and a value:
 
@@ -22,7 +22,7 @@ const MAX_RETRIES: u8 = 3;
 
 Constants are associated with the scope where they are declared. They can be declared at module level or inside a function.
 
-## Required type annotations
+## 2. Required type annotations
 
 Unlike a normal `let` binding, a constant must include its type:
 
@@ -38,7 +38,7 @@ const DAYS_PER_WEEK = 7;
 
 The value must also be usable in a compile-time constant expression. A runtime result, such as user input, cannot be assigned directly to a `const`.
 
-## Naming conventions
+## 3. Naming conventions
 
 Rust conventionally uses `SCREAMING_SNAKE_CASE` for constants:
 
@@ -49,7 +49,7 @@ const DEFAULT_TIMEOUT_SECONDS: u64 = 30;
 
 The uppercase style is a convention that makes constants easy to recognize. Rust may warn when a constant does not follow the convention.
 
-## Use a constant
+## 4. Use a constant
 
 Constants can be used anywhere a value of the declared type is expected:
 
@@ -68,7 +68,7 @@ Output:
 A working day has 480 minutes.
 ```
 
-## Constants versus variables
+## 5. Constants versus variables
 
 | Feature | Constant (`const`) | Variable (`let`) |
 | --- | --- | --- |
@@ -91,7 +91,7 @@ fn main() {
 
 Use `const` for a named value that never changes. Use `let` for a binding whose value belongs to a particular execution and may need to be mutable.
 
-## Constants versus static items
+## 6. Constants versus static items
 
 Both `const` and `static` values do not change, but they have different purposes:
 
@@ -101,7 +101,7 @@ Both `const` and `static` values do not change, but they have different purposes
 
 Use `const` for ordinary configuration values and simple named limits. Learn `static` separately when working with global state or program-wide storage.
 
-## Practice
+## 7. Practice
 
 1. Declare a constant for the number of seconds in a minute.
 2. Use it to calculate the number of seconds in an hour.

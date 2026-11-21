@@ -4,14 +4,14 @@ Shadowing creates a new binding with the same name as an earlier binding. The ne
 
 ## Contents
 
-1. [Basic shadowing](#basic-shadowing)
-2. [Transform a value](#transform-a-value)
-3. [Change the type](#change-the-type)
-4. [Shadowing and scope](#shadowing-and-scope)
-5. [Shadowing versus mutability](#shadowing-versus-mutability)
-6. [Good practices](#good-practices)
+1. [Basic shadowing](#1-basic-shadowing)
+2. [Transform a value](#2-transform-a-value)
+3. [Change the type](#3-change-the-type)
+4. [Shadowing and scope](#4-shadowing-and-scope)
+5. [Shadowing versus mutability](#5-shadowing-versus-mutability)
+6. [Good practices](#6-good-practices)
 
-## Basic shadowing
+## 1. Basic shadowing
 
 Declare a new `let` binding with a name that is already in use:
 
@@ -32,7 +32,7 @@ hello, Rust!
 
 The second `message` hides the first one from the point where the new binding is declared.
 
-## Transform a value
+## 2. Transform a value
 
 Shadowing is useful when a value passes through several transformations:
 
@@ -53,7 +53,7 @@ The input contains 3 spaces.
 
 The first binding is a string slice. The second binding stores the resulting length as an integer.
 
-## Change the type
+## 3. Change the type
 
 Shadowing can change the type because each `let` statement creates a new binding:
 
@@ -75,7 +75,7 @@ fn main() {
 }
 ```
 
-## Shadowing and scope
+## 4. Shadowing and scope
 
 A shadowed binding follows normal scope rules:
 
@@ -101,7 +101,7 @@ Outer value: 1
 
 The inner binding hides the outer binding only inside the inner scope.
 
-## Shadowing versus mutability
+## 5. Shadowing versus mutability
 
 | Feature | Shadowing | `mut` reassignment |
 | --- | --- | --- |
@@ -113,7 +113,7 @@ The inner binding hides the outer binding only inside the inner scope.
 
 Use shadowing when a value has a new meaning after transformation. Use `mut` when the same value changes during a process.
 
-## Good practices
+## 6. Good practices
 
 - Use descriptive names when a transformation becomes difficult to follow.
 - Prefer shadowing for short, clear transformations such as parsing or trimming input.
@@ -121,7 +121,7 @@ Use shadowing when a value has a new meaning after transformation. Use `mut` whe
 - Avoid long chains of shadowing that make the active type unclear.
 - Remember that shadowing is not mutation and does not change an earlier binding.
 
-## Quick reference
+## 7. Quick reference
 
 ```rust
 let value = "42";
@@ -131,7 +131,7 @@ let mut count = 0;
 count += 1; // Same binding, updated value
 ```
 
-## Practice
+## 8. Practice
 
 1. Shadow a string with its trimmed version.
 2. Parse the trimmed string into an integer using another shadowing statement.
