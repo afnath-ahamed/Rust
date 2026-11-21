@@ -39,15 +39,19 @@ Use a valid, unique project name with lowercase letters, numbers, underscores, o
 
 ```text
 hello_rust/
+├── .gitignore
+├── Cargo.lock
 ├── Cargo.toml
-├── README.md
 └── src/
     └── main.rs
 ```
 
+- `.gitignore` keeps generated build artifacts such as `target/` out of version control.
+- `Cargo.lock` records the exact dependency versions selected for the build.
 - `Cargo.toml` contains the package name, version, Rust edition, and dependencies.
 - `src/main.rs` is the entry point for this executable project.
-- `README.md` explains the lesson and commands.
+
+The lesson README is documentation stored beside the project. It is not required for the Cargo build itself.
 
 ## Program source
 
