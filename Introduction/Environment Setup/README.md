@@ -87,3 +87,54 @@ Current installation options:
 3) Cancel installation
 > 1
 ```
+
+---
+
+## Step 3 — Verify the installation
+
+After installation, close and reopen PowerShell or your terminal so the updated `PATH` is loaded.
+
+Run each command separately:
+
+```powershell
+rustc --version
+```
+
+```powershell
+cargo --version
+```
+
+```powershell
+rustup --version
+```
+
+### Example terminal output
+
+```text
+Windows PowerShell 5.1
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\WINDOWS\System32> rustc --version
+rustc 1.100.0 (0ef1bc386 2026-11-09)
+
+PS C:\WINDOWS\System32> cargo --version
+cargo 1.100.0 (3acc79c0c 2026-11-05)
+
+PS C:\WINDOWS\System32> rustup --version
+rustup 1.29.3 (edbc831ce 2026-11-02)
+info: This is the version for the rustup toolchain manager, not the rustc compiler.
+info: The currently active `rustc` version is `rustc 1.100.0 (0ef1bc386 2026-11-09)`
+```
+
+> [!NOTE]
+> Version numbers and release dates may differ depending on when Rust was installed or last updated.
+
+Each command should display its installed version number.
+
+Check the active Rust toolchain:
+
+```powershell
+rustup show
+```
+
+The output should show an active stable toolchain. On a standard 64-bit Intel or AMD Windows PC, the toolchain usually ends with `x86_64-pc-windows-msvc`.
