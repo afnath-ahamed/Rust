@@ -97,17 +97,17 @@ Rust is used across several software domains:
 
 ```mermaid
 flowchart LR
-    A["1. Rust source<br/>.rs files"] --> B["2. Cargo orchestration<br/>Resolve dependencies<br/>Select targets and profile"]
-    B --> C["3. rustc front end<br/>Parse and expand macros<br/>Resolve names and check types"]
-    C --> D["4. Safety analysis and code generation<br/>Check ownership, borrows, and lifetimes<br/>Optimize and emit machine code"]
-    D --> E["5. Link build artifacts<br/>Executable or library<br/>target/debug or target/release"]
+    A["1. Write Rust code<br/>Source files ending in .rs"] --> B["2. Build with Cargo<br/>Resolve dependencies<br/>Select targets and profile"]
+    B --> C["3. Compile and check with rustc<br/>Parse code and expand macros<br/>Check types, ownership, borrows, and lifetimes"]
+    C --> D["4. Generate and link machine code<br/>Optimize and emit object code<br/>Link required libraries"]
+    D --> E["5. Executable or library<br/>Output under target/debug<br/>or target/release"]
 ```
 
-1. Rust source code is stored in `.rs` files, commonly under `src/`.
-2. Cargo reads `Cargo.toml`, resolves the dependency graph, selects the requested targets and build profile, and invokes `rustc` as needed.
-3. `rustc` parses the source, expands macros, resolves names, and checks types.
-4. The compiler validates ownership, borrowing, and lifetimes before optimizing the program and generating machine code.
-5. Object code and required libraries are linked into the final executable or library under `target/`.
+1. **Write Rust code:** Source code is stored in `.rs` files, commonly under `src/`.
+2. **Build with Cargo:** Cargo reads `Cargo.toml`, resolves the dependency graph, selects the requested targets and build profile, and invokes `rustc` as needed.
+3. **Compile and check with rustc:** The compiler parses the source, expands macros, checks types, and validates ownership, borrowing, and lifetimes.
+4. **Generate and link machine code:** The compiler optimizes the program, emits object code, and links the required libraries.
+5. **Produce an executable or library:** Cargo places the final build artifact under `target/debug/` or `target/release/`.
 
 Common Cargo commands:
 
