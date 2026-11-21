@@ -1,4 +1,4 @@
-# 11 — Comments
+# Comments
 
 Comments explain code for people. Rust ignores ordinary comments when compiling the program, so they do not change the program's runtime behavior.
 
