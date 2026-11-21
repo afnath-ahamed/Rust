@@ -138,3 +138,29 @@ rustup show
 ```
 
 The output should show an active stable toolchain. On a standard 64-bit Intel or AMD Windows PC, the toolchain usually ends with `x86_64-pc-windows-msvc`.
+
+---
+
+## Step 4 — Configure VS Code
+
+### Install rust-analyzer
+
+1. Open Visual Studio Code.
+2. Open **Extensions** by pressing `Ctrl + Shift + X`.
+3. Search for `rust-analyzer`.
+4. Select the official [rust-analyzer extension](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) published by **The Rust Programming Language**.
+5. Click **Install**.
+
+### What rust-analyzer provides
+
+The extension adds essential Rust development features to VS Code, including:
+
+- Code completion and automatic import suggestions
+- Error detection and suggested fixes
+- Type information and documentation on hover
+- Go to definition, implementation, and type definition
+- Reference search, symbol renaming, and navigation
+- Inlay hints and semantic syntax highlighting
+
+> [!NOTE]
+> No additional Rust extensions are required at this stage. The official `rust-analyzer` extension provides the core language support needed for learning and developing Rust in VS Code.
