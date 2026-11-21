@@ -35,4 +35,4 @@ Each topic in this section will use the same structure:
 
 ## Prerequisite
 
-Complete [Your First Rust Program](<../Introduction/03 - First Rust Program/README.md>) before starting this section.
+Complete [Your First Rust Program](<../01 - Introduction/03 - First Rust Program/README.md>) before starting this section.
