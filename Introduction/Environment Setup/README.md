@@ -54,4 +54,33 @@ For standard Windows development, use the stable MSVC toolchain.
 
 When the installer displays the available options, press **Enter** to choose option `1` and continue with the standard installation.
 
-![Rustup terminal showing the standard installation option](./rustup-installation-options.png)
+```text
+The Cargo home directory is located at:
+
+  C:\Users\<username>\.cargo
+
+This can be modified with the CARGO_HOME environment variable.
+
+The cargo, rustc, rustup and other commands will be added to
+Cargo's bin directory, located at:
+
+  C:\Users\<username>\.cargo\bin
+
+This path will then be added to your PATH environment variable by
+modifying the PATH registry key at HKEY_CURRENT_USER\Environment.
+
+You can uninstall at any time with rustup self uninstall and
+these changes will be reverted.
+
+Current installation options:
+
+   default host triple: x86_64-pc-windows-msvc
+     default toolchain: stable (default)
+               profile: default
+  modify PATH variable: yes
+
+1) Proceed with standard installation (default - just press enter)
+2) Customize installation
+3) Cancel installation
+>
+```
