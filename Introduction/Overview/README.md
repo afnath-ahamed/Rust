@@ -97,10 +97,10 @@ Rust is used across several software domains:
 
 ```mermaid
 flowchart LR
-    A["1. Write Rust code<br/>Source files ending in .rs"] --> B["2. Build with Cargo<br/>Resolve dependencies<br/>Select targets and profile"]
-    B --> C["3. Compile and check with rustc<br/>Parse code and expand macros<br/>Check types, ownership, borrows, and lifetimes"]
-    C --> D["4. Generate and link machine code<br/>Optimize and emit object code<br/>Link required libraries"]
-    D --> E["5. Executable or library<br/>Output under target/debug<br/>or target/release"]
+    A["1. Write Rust code"] --> B["2. Build with Cargo"]
+    B --> C["3. Compile and check with rustc"]
+    C --> D["4. Generate and link machine code"]
+    D --> E["5. Executable or library"]
 ```
 
 1. **Write Rust code:** Source code is stored in `.rs` files, commonly under `src/`.
