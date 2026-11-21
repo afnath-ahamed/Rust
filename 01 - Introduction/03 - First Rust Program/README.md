@@ -38,7 +38,7 @@ Use a valid, unique project name with lowercase letters, numbers, underscores, o
 ## Project structure
 
 ```text
-03 - First Rust Program/
+hello_rust/
 ├── Cargo.toml
 ├── README.md
 └── src/
