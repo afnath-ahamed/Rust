@@ -151,6 +151,8 @@ The output should show an active stable toolchain. On a standard 64-bit Intel or
 4. Select the official [rust-analyzer extension](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) published by **The Rust Programming Language**.
 5. Click **Install**.
 
+![Official rust-analyzer extension published by The Rust Programming Language](./rust-analyzer-extension.png)
+
 ### What rust-analyzer provides
 
 The extension adds essential Rust development features to VS Code, including:
