@@ -33,6 +33,10 @@ Each topic in this section will use the same structure:
 4. Explanation of each important line
 5. Practice ideas and common mistakes
 
+## Lessons
+
+- [03 — Programming Fundamentals](<./03 - Programming Fundamentals/README.md>)
+
 ## Prerequisite
 
 Complete [Your First Rust Program](<../01 - Introduction/03 - First Rust Program/README.md>) before starting this section.
