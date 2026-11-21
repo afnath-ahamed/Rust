@@ -137,3 +137,7 @@ count += 1; // Same binding, updated value
 2. Parse the trimmed string into an integer using another shadowing statement.
 3. Rewrite the example with `mut` and observe why the type cannot change.
 4. Create an inner scope and compare the inner and outer values with the same name.
+
+---
+
+[← Previous: Constants](<../03 - Constants/README.md>) | [Back to Language Basics](../README.md) | [Next: Data Types →](<../05 - Data Types/README.md>)

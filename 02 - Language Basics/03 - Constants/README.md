@@ -111,3 +111,7 @@ Use `const` for ordinary configuration values and simple named limits. Learn `st
 ## Source reference
 
 This lesson was informed by the [W3Schools Rust Constants tutorial](https://www.w3schools.com/rust/rust_constants.php) and expanded with Rust-specific guidance on compile-time expressions, scope, and `static` items.
+
+---
+
+[← Previous: Mutability](<../02 - Mutability/README.md>) | [Back to Language Basics](../README.md) | [Next: Shadowing →](<../04 - Shadowing/README.md>)

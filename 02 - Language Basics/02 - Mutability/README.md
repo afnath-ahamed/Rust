@@ -130,3 +130,7 @@ Shadowing can change the type. Reassignment through `mut` cannot change the type
 2. Add `mut` and run the program again.
 3. Try assigning a value of a different type and read the compiler error.
 4. Rewrite the example using shadowing instead of reassignment.
+
+---
+
+[← Previous: Variables](<../01 - Variables/README.md>) | [Back to Language Basics](../README.md) | [Next: Constants →](<../03 - Constants/README.md>)

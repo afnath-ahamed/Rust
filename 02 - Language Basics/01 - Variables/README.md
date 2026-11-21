@@ -57,3 +57,7 @@ The annotation does not convert a value; it tells the compiler which type the bi
 ## Source reference
 
 This lesson was informed by the [W3Schools Rust Variables tutorial](https://www.w3schools.com/rust/rust_variables.php) and expanded with Rust-specific guidance.
+
+---
+
+[Back to Language Basics](../README.md) | [Next: Mutability →](<../02 - Mutability/README.md>)
