@@ -13,13 +13,6 @@ Variables are named bindings that let a Rust program keep and use values. This l
 
 Use `let` to create a binding, then use its name in an expression:
 
-Example:
-
-```rust
-let language = "Rust";
-println!("I am learning {language}.");
-```
-
 **Syntax**
 
 ```rust
