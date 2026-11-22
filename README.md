@@ -21,56 +21,107 @@ This repository organizes my Rust study notes, runnable examples, terminal outpu
 ## Learning path
 
 1. [Introduction](<./01 - Introduction/README.md>)
+
    See where Rust is used and how its compiler and ecosystem fit together. Set up Rustup, Cargo, and VS Code on Windows, then create and run a first Cargo project.
+
 2. [Programming Fundamentals](<./02 - Programming Fundamentals/README.md>)
+
    Write small programs with variables, mutability, constants, and shadowing. Learn scalar and compound types, inference, conversions, operators, functions, expressions, comments, and control flow.
+
 3. [Memory Management Fundamentals](<./03 - Memory Management Fundamentals/README.md>)
+
    Follow how stack frames and heap allocations are created and released. Compare Rust’s cleanup model with garbage collection and learn how dangling pointers and memory leaks differ.
+
 4. [Ownership System](<./04 - Ownership System/README.md>)
+
    Trace who owns a value across scopes, assignments, function calls, and returns. Distinguish moves, implicit copies, and explicit clones, and see when `Drop` runs.
+
 5. [Borrowing and References](<./05 - Borrowing and References/README.md>)
+
    Use shared and mutable references to work with existing values. Learn how the borrow checker prevents dangling references, how dereferencing works, and when to accept a slice.
+
 6. [Structs and Enums](<./06 - Structs and Enums/README.md>)
+
    Model related fields and alternative states with structs and enums. Define methods and associated functions in `impl` blocks, and use `Option` and `Result` to represent outcomes.
+
 7. [Pattern Matching](<./07 - Pattern Matching/README.md>)
+
    Extract values with destructuring and choose between `match`, `if let`, `while let`, and `let ... else`. Add guards and handle all variants explicitly when each one matters.
+
 8. [Collections and Strings](<./08 - Collections and Strings/README.md>)
+
    Choose among arrays, tuples, vectors, maps, sets, and queues by how you access and update data. Use owned `String` and borrowed `&str`, and handle UTF-8 boundaries correctly.
+
 9. [Error Handling](<./09 - Error Handling/README.md>)
+
    Distinguish recoverable failures from panics. Use `Result`, `Option`, and `?`, understand when `unwrap` or `expect` can panic, and define useful errors with `thiserror` or `anyhow`.
+
 10. [Project Organization](<./10 - Project Organization/README.md>)
+
     Organize code into packages, library and binary crates, modules, and Cargo workspaces. Control visibility and imports, and manage dependencies, features, and reproducible builds with `Cargo.toml` and `Cargo.lock`.
+
 11. [Generics, Traits and Lifetimes](<./11 - Generics, Traits and Lifetimes/README.md>)
+
     Write reusable functions and types with generics, trait bounds, default methods, and associated types. Express borrowing relationships through lifetimes and compare static dispatch with trait objects.
+
 12. [Functional Programming](<./12 - Functional Programming/README.md>)
+
     Capture state in closures and choose among `Fn`, `FnMut`, and `FnOnce`. Build lazy iterator pipelines with `map`, `filter`, `fold`, and `collect`, and recognize when intermediate allocations add work.
+
 13. [Smart Pointers](<./13 - Smart Pointers/README.md>)
+
     Use `Box`, `Rc`, `Arc`, and `Cow` for different ownership needs. Learn interior mutability with `Cell` and `RefCell`, how `Deref` and `Drop` work, and how `Weak` can prevent reference cycles.
+
 14. [Concurrency and Parallelism](<./14 - Concurrency and Parallelism/README.md>)
+
     Distinguish concurrency from parallelism and coordinate threads with channels, locks, and atomics. Use `Send` and `Sync` to reason about sharing, recognize races and deadlocks, and try Rayon for data parallelism.
+
 15. [Asynchronous Programming](<./15 - Asynchronous Programming/README.md>)
+
     Follow a future from creation to completion under an executor. Use `async` and `.await` with Tokio, tasks, channels, and streams, and reason about blocking, cancellation, pinning, and errors.
+
 16. [Advanced Rust](<./16 - Advanced Rust/README.md>)
+
     Document safety conditions for raw pointers, unsafe functions, and foreign calls. Explore advanced traits, const generics, type-state, higher-ranked bounds, generic associated types, macros, type aliases, and `no_std` libraries.
+
 17. [Testing and Debugging](<./17 - Testing and Debugging/README.md>)
+
     Check behavior with unit, integration, documentation, property-based, and fuzz tests. Use fakes, compiler diagnostics, backtraces, logs, traces, coverage, and benchmarks to investigate failures and performance.
+
 18. [Professional Rust Tooling](<./18 - Professional Rust Tooling/README.md>)
+
     Use Cargo, Rustfmt, Clippy, and Rustdoc in daily work. Check dependencies with Cargo Audit and Cargo Deny, investigate unsafe code with Miri, and work with build profiles, cross-compilation, and publishing.
+
 19. [Data Structures and Algorithms](<./19 - Data Structures and Algorithms/README.md>)
+
     Compare algorithms by time and space cost. Practice searching, sorting, recursion, and dynamic programming, and choose among linked lists, stacks, queues, trees, and graphs.
+
 20. [Backend and Web Development](<./20 - Backend and Web Development/README.md>)
+
     Build HTTP and REST services with Axum or Actix Web. Connect routing, middleware, Serde, PostgreSQL, SQLx or Diesel, authentication and authorization, WebSockets, gRPC, caching, and background jobs.
+
 21. [Software Architecture](<./21 - Software Architecture/README.md>)
+
     Design boundaries with SOLID principles, design patterns, dependency injection, and domain-driven design. Compare layered, clean, and hexagonal approaches, then weigh modular monoliths, microservices, and event-driven systems.
+
 22. [Performance Engineering](<./22 - Performance Engineering/README.md>)
+
     Measure workloads with benchmarks, profiles, and flame graphs. Use the results to guide changes to CPU work, memory, allocations, cache locality, SIMD, release settings, and binary size.
+
 23. [Security Engineering](<./23 - Security Engineering/README.md>)
+
     Apply memory safety, input validation, and secure coding at trust boundaries. Learn cryptography fundamentals, manage secrets, review dependencies and build provenance, and audit unsafe code.
+
 24. [Production and DevOps](<./24 - Production and DevOps/README.md>)
+
     Configure, containerize, and release Rust services with Docker, CI/CD, GitHub Actions, and Kubernetes. Plan cloud deployment, health checks, graceful shutdown, observability, monitoring, and rollback.
+
 25. [Specialization Paths](<./25 - Specialization Paths/README.md>)
+
     Pick a direction through small projects in backend, systems, networking, embedded, operating systems, CLI, Tauri, WebAssembly, blockchain, FinTech, games, cybersecurity, or AI/ML infrastructure.
+
 26. [Practical Projects](<./26 - Practical Projects/README.md>)
+
     Apply the roadmap through beginner, intermediate, advanced, and professional builds. Start with the runnable calculator and temperature converter, then work through guided projects involving files, databases, concurrency, distributed services, and open-source contribution.
 
 ## Repository structure
