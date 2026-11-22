@@ -85,16 +85,17 @@ let (age, name, active) = user;
 
 ### 2.2 Arrays
 
-An array has a fixed length, and every element has the same type. Its length is part of the type.
+An array stores a fixed number of values, and every element must have the same type. Its length is part of the type.
 
 ```rust
-let scores: [i32; 3] = [10, 20, 30];
-let zeros = [0; 4];
+let numbers: [i32; 5] = [10, 20, 30, 40, 50];
 
-println!("{}", scores[0]);
+println!("{}", numbers[0]); // 10
 ```
 
-Indexing starts at zero. An invalid index causes a runtime panic, so validate dynamic indexes when necessary.
+![Array fixed length and indexing](array-overview.png)
+
+Array indexing starts at zero. An invalid index causes a runtime panic, so validate dynamic indexes when necessary.
 
 ## 3. Strings
 
