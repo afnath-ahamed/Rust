@@ -31,6 +31,12 @@ A statement performs an action, such as declaring a binding:
 let total = 5; // the complete `let` declaration is a statement
 ```
 
+| Statement | Expression |
+| --- | --- |
+| Performs an action | Evaluates to a value |
+| Does not produce a usable value | Produces a value |
+| Example: `let x = 10;` | Example: `10 + 20` |
+
 Expressions can appear inside statements. A semicolon usually discards an expression's value and turns it into an expression statement.
 
 ## 2. Declaration statements
@@ -56,6 +62,18 @@ Functions, structs, enums, and other items can be declared at module level or in
 
 An expression statement evaluates an expression and ignores its result. It commonly ends with a semicolon:
 
+**Statement**
+
+```rust
+let x = 10;
+```
+
+**Expression**
+
+```rust
+let result = 10 + 20;
+```
+
 ```rust
 let mut values = vec![1, 2, 3];
 values.push(4); // the return value of `push` is `()`
@@ -71,6 +89,16 @@ fn answer() -> i32 {
 
 Adding a semicolon to `42` would make the block return `()` instead of `i32`.
 
+```rust
+fn correct() -> i32 {
+    10
+}
+
+fn incorrect() -> i32 {
+    10;
+}
+```
+
 ## 4. Block expressions
 
 A block can contain statements and a final expression. The block itself then evaluates to the final value:
@@ -84,6 +112,16 @@ let result = {
 ```
 
 The value of `result` is `5`. Names declared inside the block do not escape it.
+
+```rust
+let result = {
+    let x = 10;
+    let y = 20;
+    x + y
+};
+
+println!("{result}"); // 30
+```
 
 ## 5. Literal and path expressions
 
