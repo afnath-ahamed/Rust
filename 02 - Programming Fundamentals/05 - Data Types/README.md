@@ -97,6 +97,15 @@ println!("{}", numbers[0]); // 10
 
 Array indexing starts at zero. An invalid index causes a runtime panic, so validate dynamic indexes when necessary.
 
+### 2.3 Tuples versus arrays
+
+| Feature | Tuple | Array |
+| --- | --- | --- |
+| Data types | Same or different | Same type only |
+| Length | Fixed | Fixed |
+| Syntax | `(10, "Alex")` | `[10, 20]` |
+| Access | `tuple.0` | `array[0]` |
+
 ## 3. Strings
 
 Rust commonly uses two string forms:
