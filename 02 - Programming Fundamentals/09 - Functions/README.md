@@ -53,11 +53,7 @@ Rust does not implicitly convert an argument. Convert it explicitly before calli
 
 Write `-> Type` after the parameter list. The final expression is returned when it has no semicolon:
 
-```rust
-fn add(left: i32, right: i32) -> i32 {
-    left + right
-}
-```
+![Function syntax and return expression](function-syntax.png)
 
 Use `return` for an early result:
 
