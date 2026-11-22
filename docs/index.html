@@ -104,22 +104,80 @@
   }
   #rust-learning-checklist .roadmap-curriculum {
     display: grid;
-    gap: 0.65rem;
+    gap: 1rem;
   }
   #rust-learning-checklist .roadmap-sections {
+    --branch-gap: clamp(2.75rem, 7vw, 5rem);
+    --row-gap: 0.85rem;
+    --junction-height: 1.4rem;
+    --stem-line: #b99a30;
     display: grid;
-    gap: 0.35rem;
+    gap: var(--row-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  #rust-learning-checklist .roadmap-branch {
+    --stem-position: 50%;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--branch-gap) minmax(0, 1fr);
+  }
+  #rust-learning-checklist .roadmap-branch::before,
+  #rust-learning-checklist .roadmap-branch::after,
+  #rust-learning-checklist .roadmap-junction {
+    position: absolute;
+    pointer-events: none;
+  }
+  #rust-learning-checklist .roadmap-branch::before {
+    content: "";
+    inset-block: 0 calc(-1 * var(--row-gap));
+    inset-inline-start: var(--stem-position);
+    inline-size: 2px;
+    margin-inline-start: -1px;
+    background: var(--stem-line);
+  }
+  #rust-learning-checklist .roadmap-branch:last-child::before {
+    inset-block-end: auto;
+    block-size: var(--junction-height);
+  }
+  #rust-learning-checklist .roadmap-branch::after {
+    content: "";
+    inset-block-start: var(--junction-height);
+    inset-inline-end: calc(100% - var(--stem-position));
+    inline-size: calc(var(--branch-gap) / 2);
+    block-size: 2px;
+    margin-block-start: -1px;
+    background: var(--stem-line);
+  }
+  #rust-learning-checklist .roadmap-branch:nth-child(even)::after {
+    inset-inline: var(--stem-position) auto;
+  }
+  #rust-learning-checklist .roadmap-junction {
+    z-index: 1;
+    inset-block-start: calc(var(--junction-height) - 4px);
+    inset-inline-start: calc(var(--stem-position) - 4px);
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    background: var(--yellow);
   }
   #rust-learning-checklist details {
+    grid-column: 1;
+    min-inline-size: 0;
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 0.7rem;
+  }
+  #rust-learning-checklist .roadmap-branch:nth-child(even) details {
+    grid-column: 3;
   }
   #rust-learning-checklist summary {
     box-sizing: border-box;
     min-block-size: 44px;
     padding: 0.62rem 0.85rem;
     border-radius: inherit;
+    cursor: pointer;
   }
   #rust-learning-checklist summary::marker {
     color: var(--yellow);
@@ -155,6 +213,7 @@
     align-items: center;
     gap: 0.65rem;
     min-block-size: 44px;
+    cursor: pointer;
   }
   #rust-learning-checklist .roadmap-topic input {
     flex: none;
@@ -172,12 +231,27 @@
       transition: width 160ms ease-out;
     }
   }
+  @media (max-width: 700px) {
+    #rust-learning-checklist .roadmap-branch {
+      --stem-position: 0.25rem;
+      grid-template-columns: 1.5rem minmax(0, 1fr);
+    }
+    #rust-learning-checklist .roadmap-branch::after,
+    #rust-learning-checklist .roadmap-branch:nth-child(even)::after {
+      inset-inline: var(--stem-position) auto;
+      inline-size: calc(1.5rem - var(--stem-position));
+    }
+    #rust-learning-checklist .roadmap-branch:nth-child(n) details {
+      grid-column: 2;
+    }
+  }
   @media (max-width: 460px) {
     #rust-learning-checklist .roadmap-row {
       grid-template-columns: minmax(0, 1fr) 7ch;
     }
     #rust-learning-checklist .roadmap-chapter-track {
-      display: none;
+      grid-column: 1 / -1;
+      grid-row: 2;
     }
   }
 </style>
@@ -203,19 +277,22 @@
   <noscript>Enable JavaScript to use the checklist and track your progress.</noscript>
   <section class="roadmap-curriculum" aria-labelledby="rust-curriculum-title">
     <h2 id="rust-curriculum-title">Curriculum</h2>
-    <div class="roadmap-sections" data-sections></div>
+    <ol class="roadmap-sections" data-sections role="list"></ol>
   </section>
   <template data-chapter-template>
-    <details>
-      <summary class="cursor-interaction">
-        <span class="roadmap-row">
-          <span class="roadmap-chapter-title"></span>
-          <span class="roadmap-chapter-track progress" aria-hidden="true"><span class="progress-bar"></span></span>
-          <span class="roadmap-count text-muted text-small tabular-nums"></span>
-        </span>
-      </summary>
-      <div class="roadmap-topics" role="group"></div>
-    </details>
+    <li class="roadmap-branch">
+      <span class="roadmap-junction" aria-hidden="true"></span>
+      <details>
+        <summary class="cursor-interaction">
+          <span class="roadmap-row">
+            <span class="roadmap-chapter-title"></span>
+            <span class="roadmap-chapter-track progress" aria-hidden="true"><span class="progress-bar"></span></span>
+            <span class="roadmap-count text-muted text-small tabular-nums"></span>
+          </span>
+        </summary>
+        <div class="roadmap-topics" role="group"></div>
+      </details>
+    </li>
   </template>
   <template data-topic-template>
     <label class="roadmap-topic cursor-interaction">
@@ -242,7 +319,8 @@
     let completed = new Set();
 
     const sections = chapters.map(([title, topics], chapterIndex) => {
-      const chapter = chapterTemplate.content.firstElementChild.cloneNode(true);
+      const branch = chapterTemplate.content.firstElementChild.cloneNode(true);
+      const chapter = branch.querySelector("details");
       const list = chapter.querySelector(".roadmap-topics");
       const count = chapter.querySelector(".roadmap-count");
       const bar = chapter.querySelector(".progress-bar");
@@ -257,7 +335,7 @@
         list.append(label);
         return input;
       });
-      sectionList.append(chapter);
+      sectionList.append(branch);
       return { chapter, count, bar, inputs };
     });
 
