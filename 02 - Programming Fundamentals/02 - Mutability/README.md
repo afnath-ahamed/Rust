@@ -2,6 +2,8 @@
 
 Rust variables are immutable by default. A binding can be changed only when it is declared with `mut`, making intended changes visible in the source code.
 
+![Immutable and mutable variable comparison](mutability-overview.png)
+
 ## Contents
 
 1. [Immutable bindings](#1-immutable-bindings)
