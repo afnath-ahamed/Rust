@@ -20,6 +20,8 @@ This repository organizes my Rust study notes, runnable examples, terminal outpu
 
 ## Learning path
 
+Use the [interactive Rust Learning Checklist](https://afnath-ahamed.github.io/Rust/) to track your progress through the lessons.
+
 1. [Introduction](<./01 - Introduction/README.md>)
 
    See where Rust is used and how its compiler and ecosystem fit together. Set up Rustup, Cargo, and VS Code on Windows, then create and run a first Cargo project.

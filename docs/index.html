@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Track your progress through 264 topics on the Rust learning roadmap.">
+  <title>Rust Learning Roadmap</title>
+<style>
+  body {
+    margin: 0;
+    background: #15140f;
+    color: #fff8dc;
+    font-family: system-ui, sans-serif;
+  }
+  #rust-learning-checklist {
+    max-inline-size: 60rem;
+    margin-inline: auto;
+  }
+  #rust-learning-checklist {
+    --ink: #15140f;
+    --panel: #201f18;
+    --yellow: #ffd53d;
+    --text: #fff8dc;
+    --muted-text: #c5bfa8;
+    --line: #4a432e;
+    color-scheme: dark;
+    box-sizing: border-box;
+    display: grid;
+    gap: clamp(1rem, 3vw, 1.75rem);
+    padding: clamp(0.75rem, 3vw, 1.75rem);
+    background: var(--ink);
+    color: var(--text);
+    font: 1rem/1.5 system-ui, sans-serif;
+  }
+  #rust-learning-checklist .roadmap-heading {
+    border-radius: 1.15rem;
+    padding: clamp(1.4rem, 4vw, 2.75rem) clamp(4.8rem, 16vw, 11rem) clamp(1.4rem, 4vw, 2.75rem) clamp(1rem, 4vw, 2.5rem);
+    color: var(--ink);
+    background:
+      repeating-linear-gradient(138deg, var(--ink) 0 0.9rem, transparent 0.9rem 2rem) right top / clamp(2.25rem, 10vw, 7rem) 100% no-repeat,
+      var(--yellow);
+  }
+  #rust-learning-checklist h1,
+  #rust-learning-checklist h2 {
+    margin: 0;
+    color: inherit;
+  }
+  #rust-learning-checklist h1 {
+    font-size: clamp(1.65rem, 5vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+  #rust-learning-checklist h2 {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+  #rust-learning-checklist .roadmap-overview {
+    display: grid;
+    gap: 0.7rem;
+    padding: clamp(0.9rem, 3vw, 1.35rem);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 1rem;
+  }
+  #rust-learning-checklist .roadmap-progress-heading,
+  #rust-learning-checklist .roadmap-totals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+  #rust-learning-checklist [data-percentage] {
+    color: var(--yellow);
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    line-height: 1;
+  }
+  #rust-learning-checklist .roadmap-totals,
+  #rust-learning-checklist .roadmap-count {
+    color: var(--muted-text);
+    font-size: 0.875rem;
+    font-variant-numeric: tabular-nums;
+  }
+  #rust-learning-checklist .roadmap-chapter-title {
+    font-weight: 500;
+  }
+  #rust-learning-checklist .progress {
+    display: block;
+    block-size: 0.65rem;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--line);
+  }
+  #rust-learning-checklist .progress-bar {
+    display: block;
+    block-size: 100%;
+    border-radius: inherit;
+    background: var(--yellow);
+  }
+  #rust-learning-checklist .roadmap-chapter-track {
+    block-size: 0.3rem;
+  }
+  #rust-learning-checklist .roadmap-curriculum {
+    display: grid;
+    gap: 0.65rem;
+  }
+  #rust-learning-checklist .roadmap-sections {
+    display: grid;
+    gap: 0.35rem;
+  }
+  #rust-learning-checklist details {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 0.7rem;
+  }
+  #rust-learning-checklist summary {
+    box-sizing: border-box;
+    min-block-size: 44px;
+    padding: 0.62rem 0.85rem;
+    border-radius: inherit;
+  }
+  #rust-learning-checklist summary::marker {
+    color: var(--yellow);
+  }
+  #rust-learning-checklist details[open] .roadmap-chapter-title,
+  #rust-learning-checklist details[data-complete] .roadmap-count {
+    color: var(--yellow);
+  }
+  #rust-learning-checklist :is(summary, input):focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: 2px;
+  }
+  #rust-learning-checklist .roadmap-row {
+    display: inline-grid;
+    grid-template-columns: minmax(0, 1fr) 18% 8ch;
+    align-items: center;
+    gap: 0.6rem;
+    inline-size: calc(100% - 2ch);
+    vertical-align: middle;
+  }
+  #rust-learning-checklist .roadmap-count {
+    text-align: end;
+    white-space: nowrap;
+  }
+  #rust-learning-checklist .roadmap-topics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    column-gap: 1rem;
+    padding: 0.25rem 0.85rem 0.7rem 1.7rem;
+  }
+  #rust-learning-checklist .roadmap-topic {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-block-size: 44px;
+  }
+  #rust-learning-checklist .roadmap-topic input {
+    flex: none;
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
+    margin: 0;
+    accent-color: var(--yellow);
+  }
+  #rust-learning-checklist .roadmap-topic input:checked + span {
+    color: var(--muted-text);
+    text-decoration: line-through;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    #rust-learning-checklist .progress-bar {
+      transition: width 160ms ease-out;
+    }
+  }
+  @media (max-width: 460px) {
+    #rust-learning-checklist .roadmap-row {
+      grid-template-columns: minmax(0, 1fr) 7ch;
+    }
+    #rust-learning-checklist .roadmap-chapter-track {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+<main id="rust-learning-checklist" aria-labelledby="rust-checklist-title">
+  <header class="roadmap-heading">
+    <h1 id="rust-checklist-title">Rust Learning Roadmap</h1>
+  </header>
+  <div class="roadmap-overview">
+    <div class="roadmap-progress-heading">
+      <h2>Overall progress</h2>
+      <strong class="tabular-nums" data-percentage aria-hidden="true">0%</strong>
+    </div>
+    <div class="progress" role="progressbar" aria-label="Overall topic progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="progress-bar" style="width: 0%"></div>
+    </div>
+    <div class="roadmap-totals text-small text-muted tabular-nums" aria-live="polite" aria-atomic="true">
+      <span data-topics-total></span>
+      <span data-chapters-total></span>
+    </div>
+  </div>
+  <noscript>Enable JavaScript to use the checklist and track your progress.</noscript>
+  <section class="roadmap-curriculum" aria-labelledby="rust-curriculum-title">
+    <h2 id="rust-curriculum-title">Curriculum</h2>
+    <div class="roadmap-sections" data-sections></div>
+  </section>
+  <template data-chapter-template>
+    <details>
+      <summary class="cursor-interaction">
+        <span class="roadmap-row">
+          <span class="roadmap-chapter-title"></span>
+          <span class="roadmap-chapter-track progress" aria-hidden="true"><span class="progress-bar"></span></span>
+          <span class="roadmap-count text-muted text-small tabular-nums"></span>
+        </span>
+      </summary>
+      <div class="roadmap-topics" role="group"></div>
+    </details>
+  </template>
+  <template data-topic-template>
+    <label class="roadmap-topic cursor-interaction">
+      <input type="checkbox">
+      <span class="roadmap-topic-name"></span>
+    </label>
+  </template>
+  <script type="application/json" data-outline>[["01 – Introduction", ["Overview", "Environment Setup", "First Rust Program"]], ["02 – Programming Fundamentals", ["Variables", "Mutability", "Constants", "Shadowing", "Data Types", "Type Inference", "Type Conversion", "Operators", "Functions", "Expressions and Statements", "Comments", "Control Flow"]], ["03 – Memory Management Fundamentals", ["Stack memory", "Heap memory", "Memory allocation", "Memory deallocation", "Pointers", "Garbage collection", "Dangling pointers", "Memory leaks", "Memory safety"]], ["04 – Ownership System", ["Ownership rules", "Variable scope", "Move semantics", "Copy semantics", "Clone", "Ownership with functions", "Return values and ownership", "Drop"]], ["05 – Borrowing and References", ["References", "Immutable borrowing", "Mutable borrowing", "Borrowing rules", "Borrow checker", "Dangling references", "Dereferencing", "Slices"]], ["06 – Structs and Enums", ["Structs", "Tuple structs", "Unit-like structs", "Methods", "Associated functions", "Implementation blocks (impl)", "Enums", "Option", "Result"]], ["07 – Pattern Matching", ["Match expressions", "If let", "While let", "Let else", "Destructuring", "Match guards", "Exhaustive matching"]], ["08 – Collections and Strings", ["Arrays", "Tuples", "Vectors", "String vs Str", "HashMap", "HashSet", "BTreeMap", "VecDeque", "UTF-8 encoding"]], ["09 – Error Handling", ["Recoverable errors", "Unrecoverable errors", "Panic", "Result", "Option", "Unwrap and Expect", "Error propagation", "Custom errors", "Thiserror", "Anyhow"]], ["10 – Project Organization", ["Packages", "Crates", "Modules", "Module tree", "Public and private visibility", "Use keyword", "Library crates", "Binary crates", "Cargo.toml", "Cargo.lock", "Dependencies", "Features", "Cargo workspaces"]], ["11 – Generics, Traits and Lifetimes", ["Generic functions", "Generic structs", "Generic enums", "Traits", "Trait implementation", "Trait bounds", "Default implementations", "Associated types", "Lifetime annotations", "Lifetime elision", "Static lifetime", "Trait objects", "Static vs Dynamic dispatch"]], ["12 – Functional Programming", ["Closures", "Fn, FnMut and FnOnce", "Iterators", "Iterator adapters", "Map", "Filter", "Fold", "Collect", "Lazy evaluation", "Zero-cost abstractions"]], ["13 – Smart Pointers", ["Box", "Rc", "Arc", "RefCell", "Cell", "Weak", "Cow", "Deref trait", "Drop trait", "Interior mutability", "Reference cycles"]], ["14 – Concurrency and Parallelism", ["Processes vs Threads", "Multithreading", "Thread spawning", "Move closures", "Message passing", "Channels", "Shared state", "Mutex", "RwLock", "Send and Sync traits", "Atomics", "Race conditions", "Deadlocks", "Rayon"]], ["15 – Asynchronous Programming", ["Synchronous vs Asynchronous", "Blocking vs Non-blocking", "Async and Await", "Futures", "Executors", "Async runtimes", "Tokio", "Async tasks", "Async channels", "Streams", "Cancellation", "Pin and Unpin", "Async error handling"]], ["16 – Advanced Rust", ["Unsafe Rust", "Raw pointers", "Unsafe functions", "Advanced traits", "Associated constants", "Const generics", "Type aliases", "Type-state pattern", "Higher-ranked trait bounds", "Generic associated types", "Declarative macros", "Procedural macros", "Foreign Function Interface (FFI)", "no_std Rust"]], ["17 – Testing and Debugging", ["Unit testing", "Integration testing", "Documentation testing", "Property-based testing", "Mocking", "Fuzz testing", "Benchmarking", "Debugging", "Logging", "Tracing", "Code coverage"]], ["18 – Professional Rust Tooling", ["Cargo commands", "Rustfmt", "Clippy", "Rustdoc", "Cargo Audit", "Cargo Deny", "Miri", "Compiler diagnostics", "Build profiles", "Cross-compilation", "Publishing crates"]], ["19 – Data Structures and Algorithms", ["Time and space complexity", "Searching algorithms", "Sorting algorithms", "Linked lists", "Stacks", "Queues", "Trees", "Graphs", "Recursion", "Dynamic programming"]], ["20 – Backend and Web Development", ["HTTP fundamentals", "REST APIs", "Axum", "Actix Web", "Routing", "Middleware", "Serialization (Serde)", "Database integration", "Authentication", "Authorization", "WebSockets", "gRPC", "Caching", "Background jobs"]], ["21 – Software Architecture", ["SOLID principles", "Design patterns", "Dependency injection", "Layered architecture", "Clean architecture", "Hexagonal architecture", "Domain-driven design", "Modular monolith", "Microservices", "Event-driven architecture"]], ["22 – Performance Engineering", ["Memory optimization", "CPU optimization", "Allocation optimization", "Cache locality", "Profiling", "Flame graphs", "Benchmark analysis", "SIMD", "Release optimization", "Binary size optimization"]], ["23 – Security Engineering", ["Memory safety guarantees", "Input validation", "Secure coding practices", "Cryptography fundamentals", "Secrets management", "Dependency vulnerabilities", "Supply chain security", "Unsafe code auditing"]], ["24 – Production and DevOps", ["Environment configuration", "Docker", "CI and CD", "GitHub Actions", "Cloud deployment", "Kubernetes", "Observability", "Health checks", "Graceful shutdown", "Production monitoring"]], ["25 – Specialization Paths", ["Backend engineering", "Systems programming", "Network programming", "Embedded systems", "Operating systems", "CLI applications", "Desktop applications (Tauri)", "WebAssembly (WASM)", "Blockchain", "FinTech infrastructure", "Game development", "Cybersecurity", "AI and ML Infrastructure"]], ["26 – Practical Projects", ["Beginner", "Intermediate", "Advanced", "Professional"]]]</script>
+</main>
+
+<script>
+  (() => {
+    const root = document.getElementById("rust-learning-checklist");
+    const chapters = JSON.parse(root.querySelector("[data-outline]").textContent);
+    const sectionList = root.querySelector("[data-sections]");
+    const chapterTemplate = root.querySelector("[data-chapter-template]");
+    const topicTemplate = root.querySelector("[data-topic-template]");
+    const overall = root.querySelector('[role="progressbar"]');
+    const percentage = root.querySelector("[data-percentage]");
+    const topicsTotal = root.querySelector("[data-topics-total]");
+    const chaptersTotal = root.querySelector("[data-chapters-total]");
+    const storageKey = "afnath-ahamed/rust-roadmap/v1";
+    const allIds = new Set();
+    let completed = new Set();
+
+    const sections = chapters.map(([title, topics], chapterIndex) => {
+      const chapter = chapterTemplate.content.firstElementChild.cloneNode(true);
+      const list = chapter.querySelector(".roadmap-topics");
+      const count = chapter.querySelector(".roadmap-count");
+      const bar = chapter.querySelector(".progress-bar");
+      chapter.querySelector(".roadmap-chapter-title").textContent = title;
+      list.setAttribute("aria-label", title);
+      const inputs = topics.map((topic, topicIndex) => {
+        const label = topicTemplate.content.firstElementChild.cloneNode(true);
+        const input = label.querySelector("input");
+        input.value = `${chapterIndex + 1}.${topicIndex + 1}`;
+        allIds.add(input.value);
+        label.querySelector(".roadmap-topic-name").textContent = topic;
+        list.append(label);
+        return input;
+      });
+      sectionList.append(chapter);
+      return { chapter, count, bar, inputs };
+    });
+
+    function updateProgress() {
+      let finishedSections = 0;
+      for (const { chapter, inputs, count, bar } of sections) {
+        const finishedTopics = inputs.filter(input => completed.has(input.value)).length;
+        const isDone = finishedTopics === inputs.length;
+        finishedSections += Number(isDone);
+        chapter.toggleAttribute("data-complete", isDone);
+        count.textContent = isDone ? "Complete" : `${finishedTopics} / ${inputs.length}`;
+        if (isDone) {
+          count.removeAttribute("aria-label");
+        } else {
+          count.setAttribute("aria-label", `${finishedTopics} of ${inputs.length} complete`);
+        }
+        bar.style.width = `${finishedTopics / inputs.length * 100}%`;
+      }
+
+      const percent = completed.size / allIds.size * 100;
+      overall.querySelector(".progress-bar").style.width = `${percent}%`;
+      overall.setAttribute("aria-valuenow", percent.toFixed(1));
+      overall.setAttribute("aria-valuetext", `${completed.size} of ${allIds.size} topics complete`);
+      percentage.textContent = `${Number(percent.toFixed(1))}%`;
+      topicsTotal.textContent = `${completed.size} of ${allIds.size} topics complete`;
+      chaptersTotal.textContent = `${finishedSections} of ${sections.length} sections complete`;
+    }
+
+    function load() {
+      let savedTopics;
+      try {
+        savedTopics = JSON.parse(localStorage.getItem(storageKey));
+      } catch {
+        // The checklist remains usable when browser storage is unavailable.
+      }
+      completed = new Set(Array.isArray(savedTopics) ? savedTopics.filter(id => allIds.has(id)) : []);
+      for (const { inputs } of sections) {
+        for (const input of inputs) input.checked = completed.has(input.value);
+      }
+      updateProgress();
+    }
+
+    function save() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify([...completed]));
+      } catch {
+        // Keep progress in memory for the current page.
+      }
+    }
+
+    sectionList.addEventListener("change", ({ target }) => {
+      if (target.checked) {
+        completed.add(target.value);
+      } else {
+        completed.delete(target.value);
+      }
+      updateProgress();
+      save();
+    });
+    load();
+    const nextSection = sections.find(({ inputs }) => inputs.some(input => !input.checked));
+    if (nextSection) nextSection.chapter.open = true;
+  })();
+</script>
+</body>
+</html>
