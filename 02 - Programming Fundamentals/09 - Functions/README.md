@@ -2,6 +2,8 @@
 
 Functions group reusable behavior behind a name. They define a clear boundary for inputs, outputs, scope, and errors while Rust checks every type at compile time.
 
+![Function flow from input to output](function-flow.png)
+
 ## Contents
 
 1. [Define and call functions](#1-define-and-call-functions)
