@@ -27,7 +27,7 @@ Trying to assign a new value produces a compiler error:
 ```rust,compile_fail
 fn main() {
     let temperature = 20;
-    temperature = 25;
+    temperature = 25; // Compilation error: the binding is immutable.
 }
 ```
 
