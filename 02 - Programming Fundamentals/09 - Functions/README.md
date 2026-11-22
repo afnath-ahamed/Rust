@@ -59,8 +59,6 @@ fn add(left: i32, right: i32) -> i32 {
 }
 ```
 
-![Function syntax and return expression](function-syntax.png)
-
 Use `return` for an early result:
 
 ```rust
