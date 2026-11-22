@@ -2,6 +2,8 @@
 
 Every Rust value has a type. The type tells the compiler which values are valid and which operations are available. Rust often infers a type from context, but you can add an annotation when clarity or precision is needed.
 
+![Rust data types overview](data-types-overview.png)
+
 ## Contents
 
 1. [Scalar types](#1-scalar-types)
