@@ -80,6 +80,8 @@ println!("{}", user.1); // Alex
 let (age, name, active) = user;
 ```
 
+![Tuple values and positional access](tuple-indexing.png)
+
 ### 2.2 Arrays
 
 An array has a fixed length, and every element has the same type. Its length is part of the type.
