@@ -18,13 +18,24 @@ Scalar types represent one value.
 
 ### 1.1 Integers
 
-Integers store whole numbers. Signed types (`i8`, `i16`, `i32`, `i64`, `i128`, `isize`) support negative values; unsigned types (`u8`, `u16`, `u32`, `u64`, `u128`, `usize`) support zero and positive values. `i32` is a common default for integer literals.
+Integers store whole numbers without decimal points. Signed types can represent negative and positive values. Unsigned types represent zero and positive values only.
+
+| Size | Signed | Unsigned |
+| --- | --- | --- |
+| 8-bit | `i8` | `u8` |
+| 16-bit | `i16` | `u16` |
+| 32-bit | `i32` | `u32` |
+| 64-bit | `i64` | `u64` |
+| 128-bit | `i128` | `u128` |
+| Architecture-dependent | `isize` | `usize` |
 
 ```rust
-let temperature: i32 = -5;
-let items: u32 = 25;
-let bytes: u8 = 255;
+let temperature: i32 = -10;
+let age: u8 = 25;
+let population: u64 = 1_000_000;
 ```
+
+The default integer type is usually `i32`. Use an explicit type when the required range, platform size, or API contract makes it important.
 
 ### 1.2 Floating-point numbers
 
