@@ -130,6 +130,20 @@ let count: i64 = 30;
 let ratio: f32 = 0.5;
 ```
 
+Explicit typing declares the type after the variable name:
+
+```rust
+let age: i32 = 25;
+```
+
+With implicit typing, Rust infers the type from the value:
+
+```rust
+let age = 25;
+```
+
+Rust remains statically typed even when a type annotation is omitted.
+
 Literal suffixes can also specify a numeric type:
 
 ```rust
