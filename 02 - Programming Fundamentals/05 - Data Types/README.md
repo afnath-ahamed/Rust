@@ -20,14 +20,7 @@ Scalar types represent one value.
 
 Integers store whole numbers without decimal points. Signed types can represent negative and positive values. Unsigned types represent zero and positive values only.
 
-| Size | Signed | Unsigned |
-| --- | --- | --- |
-| 8-bit | `i8` | `u8` |
-| 16-bit | `i16` | `u16` |
-| 32-bit | `i32` | `u32` |
-| 64-bit | `i64` | `u64` |
-| 128-bit | `i128` | `u128` |
-| Architecture-dependent | `isize` | `usize` |
+![Integer types, signed and unsigned ranges](integer-types.png)
 
 ```rust
 let temperature: i32 = -10;
