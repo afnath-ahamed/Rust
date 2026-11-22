@@ -130,6 +130,10 @@ Rust does not silently mix numeric types. Convert values explicitly before combi
 
 This lesson was informed by the [W3Schools Rust Data Types tutorial](https://www.w3schools.com/rust/rust_data_types.php) and expanded with Rust-specific guidance on ownership, Unicode characters, arrays, and numeric types.
 
+## Related lessons
+
+- [Collections and Strings](<../../08 - Collections and Strings/README.md>) expands on arrays, tuples, growable collections, and UTF-8.
+
 ---
 
 [← Previous: Shadowing](<../04 - Shadowing/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Type Inference →](<../06 - Type Inference/README.md>)

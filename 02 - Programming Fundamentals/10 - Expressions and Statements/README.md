@@ -161,6 +161,8 @@ println!("{}", user.name);
 
 Field access follows ownership and borrowing rules when the field contains an owned value.
 
+See [Structs and Enums](<../../06 - Structs and Enums/README.md>) for data modeling and methods.
+
 ## 10. Return, break, and continue expressions
 
 `return` exits a function with a value. `break` exits a loop, optionally with a value, and `continue` skips to the next loop iteration:
@@ -191,6 +193,7 @@ assert_eq!(add_offset(5), 15);
 ```
 
 See [Functions](<../09 - Functions/README.md>) for an introduction to closures as reusable behavior.
+Continue with [Functional Programming](<../../12 - Functional Programming/README.md>) for capture modes and iterators.
 
 ## 12. Expression precedence
 

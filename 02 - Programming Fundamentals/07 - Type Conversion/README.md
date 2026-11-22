@@ -101,6 +101,10 @@ let message = format!("Count: {number}");
 4. Try converting a large `u16` into a `u8` with `TryFrom`.
 5. Convert a number to text, then parse it back into a number.
 
+## Related lesson
+
+[Error Handling](<../../09 - Error Handling/README.md>) explains how to report and propagate failures from parsing and checked conversions.
+
 ---
 
 [← Previous: Type Inference](<../06 - Type Inference/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Operators →](<../08 - Operators/README.md>)

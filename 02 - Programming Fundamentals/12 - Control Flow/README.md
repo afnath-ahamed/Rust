@@ -12,7 +12,7 @@ Control flow determines which code runs and how often it runs. Rust provides con
 6. [for](#6-for)
 7. [break and continue](#7-break-and-continue)
 8. [Loop labels](#8-loop-labels)
-9. [let ... else](#9-let-else)
+9. [let ... else](#9-let--else)
 
 ## 1. `if` and `else`
 
@@ -165,6 +165,8 @@ fn first_name(input: Option<&str>) -> &str {
 
 This is useful when the successful path should remain at the current scope instead of becoming deeply nested.
 
+[Pattern Matching](<../../07 - Pattern Matching/README.md>) takes these examples further with destructuring, guards, and exhaustiveness.
+
 ## Practice
 
 1. Write an `if` expression that classifies a score.
@@ -182,4 +184,4 @@ This lesson consolidates Rust control-flow fundamentals and links naturally to t
 
 ---
 
-[← Previous: Comments](<../11 - Comments/README.md>) | [Back to Programming Fundamentals](../README.md)
+[← Previous: Comments](<../11 - Comments/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Memory Management Fundamentals →](<../../03 - Memory Management Fundamentals/README.md>)

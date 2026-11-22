@@ -23,4 +23,4 @@ Complete [Your First Rust Program](<../01 - Introduction/03 - First Rust Program
 
 ---
 
-[← Previous: Introduction](<../01 - Introduction/README.md>) | Next: Memory Management Fundamentals →
+[← Previous: Introduction](<../01 - Introduction/README.md>) | [Back to the roadmap](../README.md) | [Next: Memory Management Fundamentals →](<../03 - Memory Management Fundamentals/README.md>)

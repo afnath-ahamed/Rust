@@ -118,7 +118,7 @@ fn main() {
 }
 ```
 
-The complete ownership rules belong in a dedicated Ownership lesson. This section only explains how calls interact with ownership.
+For moves, copies, and returned values, see [Ownership System](<../../04 - Ownership System/README.md>).
 
 ## 7. Borrowing parameters
 
@@ -136,6 +136,8 @@ fn append_mark(text: &mut String) {
 
 References avoid transferring ownership, while Rust checks that they remain valid.
 
+See [Borrowing and References](<../../05 - Borrowing and References/README.md>) for borrowing rules and compiler diagnostics.
+
 ## 8. Closures
 
 Closures are anonymous functions that can capture values from their surrounding scope. They use `||` around parameters:
@@ -149,6 +151,8 @@ println!("{}", double(5)); // 10
 
 Closures are useful for short callbacks, iterator operations, and behavior passed into another function. Unlike named functions, they can capture local variables.
 
+Continue with [Functional Programming](<../../12 - Functional Programming/README.md>) for capture modes and the call traits.
+
 ## 9. Error-returning functions
 
 A function that can fail should return `Result<T, E>` so the caller handles success or failure explicitly:
@@ -160,6 +164,8 @@ fn parse_count(text: &str) -> Result<u32, std::num::ParseIntError> {
 ```
 
 Use `Option<T>` when the result may be absent but there is no error detail. Use the `?` operator to propagate compatible errors from a function that returns `Result` or `Option`.
+
+See [Error Handling](<../../09 - Error Handling/README.md>) for error types and propagation.
 
 ## 10. Best practices
 
