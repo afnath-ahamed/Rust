@@ -13,12 +13,6 @@ Variables are named bindings that let a Rust program keep and use values. This l
 
 Use `let` to create a binding, then use its name in an expression:
 
-**Syntax**
-
-```rust
-let variable_name = value;
-```
-
 ```rust
 fn main() {
     let name = "John";
@@ -26,6 +20,12 @@ fn main() {
 
     println!("{name} is {age} years old.");
 }
+```
+
+**Syntax**
+
+```rust
+let variable_name = value;
 ```
 
 Rust usually infers each binding's type from its value. Captured formatting such as `{name}` inserts the value into the output.
