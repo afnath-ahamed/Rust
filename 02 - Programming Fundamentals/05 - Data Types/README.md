@@ -32,11 +32,19 @@ The default integer type is usually `i32`. Use an explicit type when the require
 
 ### 1.2 Floating-point numbers
 
-`f32` and `f64` represent decimal values. `f64` is the usual default because it provides greater precision.
+Floating-point types store numbers with decimal points. Rust provides two sizes:
+
+| Type | Size | Precision |
+| --- | --- | --- |
+| `f32` | 32-bit | Single precision |
+| `f64` | 64-bit | Double precision |
 
 ```rust
-let price: f64 = 19.99;
+let price: f32 = 99.99;
+let pi: f64 = 3.14159265359;
 ```
+
+`f64` is the usual default because it provides greater precision. Floating-point calculations can have small rounding differences, so avoid using them for exact financial values.
 
 ### 1.3 Boolean
 
