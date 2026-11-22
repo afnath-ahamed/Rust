@@ -25,6 +25,15 @@
     mask-size: 64px 108px;
     mask-repeat: repeat;
   }
+  .honeycomb-glow {
+    display: none;
+    position: fixed;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    color: var(--yellow);
+    pointer-events: none;
+  }
   #rust-learning-checklist {
     max-inline-size: 60rem;
     margin-inline: auto;
@@ -239,16 +248,19 @@
     text-decoration: line-through;
   }
   @media (prefers-reduced-motion: no-preference) {
-    body::before {
-      animation: honeycomb-breathe 10s ease-in-out infinite;
+    .honeycomb-glow {
+      display: block;
+    }
+    .honeycomb-glow path {
+      animation: honeycomb-cell-breathe var(--pulse-duration) var(--pulse-delay) ease-in-out infinite;
     }
     #rust-learning-checklist .progress-bar {
       transition: width 160ms ease-out;
     }
   }
-  @keyframes honeycomb-breathe {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 0.27; }
+  @keyframes honeycomb-cell-breathe {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.085; }
   }
   @media (max-width: 700px) {
     #rust-learning-checklist .roadmap-branch {
@@ -276,6 +288,12 @@
 </style>
 </head>
 <body>
+<svg class="honeycomb-glow" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="honeycomb-pulses" width="512" height="540" patternUnits="userSpaceOnUse"></pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#honeycomb-pulses)"></rect>
+</svg>
 <main id="rust-learning-checklist" aria-labelledby="rust-checklist-title">
   <header class="roadmap-heading">
     <h1 id="rust-checklist-title">Rust Learning Roadmap</h1>
@@ -324,6 +342,22 @@
 
 <script>
   (() => {
+    const glowPattern = document.getElementById("honeycomb-pulses");
+    // Align the animated cells with the 64 × 108 px outline tile.
+    for (let row = 0; row < 9; row++) {
+      const y = (row + 1) * 54;
+      for (let x = row % 2 === 0 ? 64 : 32; x < 512; x += 64) {
+        const cell = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const duration = 7 + Math.random() * 11;
+        cell.setAttribute("d", "M0 -36 32 -18 32 18 0 36 -32 18 -32 -18Z");
+        cell.setAttribute("transform", `translate(${x} ${y})`);
+        cell.setAttribute("fill", "currentColor");
+        cell.style.setProperty("--pulse-duration", `${duration}s`);
+        cell.style.setProperty("--pulse-delay", `-${Math.random() * duration}s`);
+        glowPattern.append(cell);
+      }
+    }
+
     const root = document.getElementById("rust-learning-checklist");
     const chapters = JSON.parse(root.querySelector("[data-outline]").textContent);
     const sectionList = root.querySelector("[data-sections]");
