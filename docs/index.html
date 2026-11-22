@@ -56,7 +56,7 @@
   }
   #rust-learning-checklist .roadmap-heading {
     border-radius: 1.15rem;
-    padding: clamp(1.4rem, 4vw, 2.75rem) clamp(4.8rem, 16vw, 11rem) clamp(1.4rem, 4vw, 2.75rem) clamp(1rem, 4vw, 2.5rem);
+    padding: clamp(1rem, 3vw, 1.75rem) clamp(4.8rem, 16vw, 11rem) clamp(1rem, 3vw, 1.75rem) clamp(1rem, 4vw, 2.5rem);
     color: var(--ink);
     background:
       repeating-linear-gradient(138deg, var(--ink) 0 0.9rem, transparent 0.9rem 2rem) right top / clamp(2.25rem, 10vw, 7rem) 100% no-repeat,
@@ -68,7 +68,7 @@
     color: inherit;
   }
   #rust-learning-checklist h1 {
-    font-size: clamp(1.65rem, 5vw, 3.1rem);
+    font-size: clamp(1.65rem, 5vw, 2.6rem);
     font-weight: 800;
     line-height: 1.04;
     letter-spacing: -0.045em;
@@ -80,11 +80,45 @@
   }
   #rust-learning-checklist .roadmap-overview {
     display: grid;
-    gap: 0.7rem;
+    grid-template-columns: minmax(0, 1fr) minmax(10rem, max-content);
+    align-items: center;
+    gap: 1rem 1.5rem;
     padding: clamp(0.9rem, 3vw, 1.35rem);
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 1rem;
+  }
+  #rust-learning-checklist .roadmap-overview:has([data-resume][hidden]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #rust-learning-checklist .roadmap-progress,
+  #rust-learning-checklist .roadmap-resume {
+    display: grid;
+    gap: 0.55rem;
+  }
+  #rust-learning-checklist .roadmap-resume {
+    max-inline-size: 16rem;
+  }
+  #rust-learning-checklist .roadmap-resume[hidden] {
+    display: none;
+  }
+  #rust-learning-checklist .roadmap-resume button {
+    min-block-size: 44px;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid transparent;
+    border-radius: 0.55rem;
+    background: var(--yellow);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  #rust-learning-checklist .roadmap-resume button:hover {
+    background: #ffe477;
+  }
+  #rust-learning-checklist [data-next-label] {
+    color: var(--muted-text);
+    font-size: 0.875rem;
   }
   #rust-learning-checklist .roadmap-progress-heading,
   #rust-learning-checklist .roadmap-totals {
@@ -132,7 +166,7 @@
     --branch-gap: clamp(2.75rem, 7vw, 5rem);
     --row-gap: 0.85rem;
     --junction-height: 1.4rem;
-    --stem-line: #b99a30;
+    --stem-line: #817449;
     display: grid;
     gap: var(--row-gap);
     margin: 0;
@@ -177,12 +211,38 @@
   }
   #rust-learning-checklist .roadmap-junction {
     z-index: 1;
-    inset-block-start: calc(var(--junction-height) - 4px);
-    inset-inline-start: calc(var(--stem-position) - 4px);
-    inline-size: 8px;
-    block-size: 8px;
+    inset-block-start: var(--junction-height);
+    inset-inline-start: var(--stem-position);
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    inline-size: 0.65rem;
+    block-size: 0.65rem;
+    border: 1px solid var(--muted-text);
     border-radius: 50%;
+    background: var(--ink);
+  }
+  #rust-learning-checklist .roadmap-branch[data-current]::after {
     background: var(--yellow);
+  }
+  #rust-learning-checklist [data-current] .roadmap-junction {
+    inline-size: 0.85rem;
+    block-size: 0.85rem;
+    border-color: var(--yellow);
+    background: var(--yellow);
+  }
+  #rust-learning-checklist .roadmap-branch[data-complete] .roadmap-junction {
+    display: grid;
+    place-items: center;
+    inline-size: 1.05rem;
+    block-size: 1.05rem;
+  }
+  #rust-learning-checklist .roadmap-branch[data-complete] .roadmap-junction::before {
+    content: "";
+    inline-size: 0.42rem;
+    block-size: 0.24rem;
+    border: solid var(--text);
+    border-width: 0 0 1px 1px;
+    transform: translateY(-1px) rotate(-45deg);
   }
   #rust-learning-checklist details {
     grid-column: 1;
@@ -194,6 +254,9 @@
   #rust-learning-checklist .roadmap-branch:nth-child(even) details {
     grid-column: 3;
   }
+  #rust-learning-checklist .roadmap-branch[data-current] details {
+    border-color: #b99a30;
+  }
   #rust-learning-checklist summary {
     box-sizing: border-box;
     min-block-size: 44px;
@@ -204,11 +267,10 @@
   #rust-learning-checklist summary::marker {
     color: var(--yellow);
   }
-  #rust-learning-checklist details[open] .roadmap-chapter-title,
-  #rust-learning-checklist details[data-complete] .roadmap-count {
+  #rust-learning-checklist [data-current] .roadmap-chapter-title {
     color: var(--yellow);
   }
-  #rust-learning-checklist :is(summary, input):focus-visible {
+  #rust-learning-checklist :is(summary, input, a, button):focus-visible {
     outline: 2px solid var(--yellow);
     outline-offset: 2px;
   }
@@ -228,12 +290,18 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
     column-gap: 1rem;
-    padding: 0.25rem 0.85rem 0.7rem 1.7rem;
+    padding: 0.25rem 0.85rem 0.7rem 0.75rem;
   }
   #rust-learning-checklist .roadmap-topic {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
+    gap: 0.15rem;
+    min-block-size: 44px;
+  }
+  #rust-learning-checklist .roadmap-topic-toggle {
+    display: grid;
+    place-items: center;
+    flex: 0 0 44px;
     min-block-size: 44px;
     cursor: pointer;
   }
@@ -244,9 +312,17 @@
     margin: 0;
     accent-color: var(--yellow);
   }
-  #rust-learning-checklist .roadmap-topic input:checked + span {
+  #rust-learning-checklist .roadmap-topic-name {
+    color: var(--text);
+    overflow-wrap: anywhere;
+    text-underline-offset: 0.2em;
+  }
+  #rust-learning-checklist .roadmap-topic-name:hover,
+  #rust-learning-checklist .roadmap-topic-name[data-next] {
+    color: var(--yellow);
+  }
+  #rust-learning-checklist .roadmap-topic:has(input:checked) .roadmap-topic-name {
     color: var(--muted-text);
-    text-decoration: line-through;
   }
   @media (prefers-reduced-motion: no-preference) {
     .honeycomb-glow {
@@ -264,8 +340,11 @@
     50% { opacity: 0.085; }
   }
   @media (max-width: 700px) {
+    #rust-learning-checklist .roadmap-overview {
+      grid-template-columns: minmax(0, 1fr);
+    }
     #rust-learning-checklist .roadmap-branch {
-      --stem-position: 0.25rem;
+      --stem-position: 0.55rem;
       grid-template-columns: 1.5rem minmax(0, 1fr);
     }
     #rust-learning-checklist .roadmap-branch::after,
@@ -300,16 +379,22 @@
     <h1 id="rust-checklist-title">Rust Learning Roadmap</h1>
   </header>
   <div class="roadmap-overview">
-    <div class="roadmap-progress-heading">
-      <h2>Overall progress</h2>
-      <strong class="tabular-nums" data-percentage aria-hidden="true">0%</strong>
+    <div class="roadmap-progress">
+      <div class="roadmap-progress-heading">
+        <h2>Overall progress</h2>
+        <strong class="tabular-nums" data-percentage aria-hidden="true">0%</strong>
+      </div>
+      <div class="progress" role="progressbar" aria-label="Overall topic progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="progress-bar" style="width: 0%"></div>
+      </div>
+      <div class="roadmap-totals tabular-nums" aria-live="polite" aria-atomic="true">
+        <span data-topics-total></span>
+        <span data-chapters-total></span>
+      </div>
     </div>
-    <div class="progress" role="progressbar" aria-label="Overall topic progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-      <div class="progress-bar" style="width: 0%"></div>
-    </div>
-    <div class="roadmap-totals text-small text-muted tabular-nums" aria-live="polite" aria-atomic="true">
-      <span data-topics-total></span>
-      <span data-chapters-total></span>
+    <div class="roadmap-resume" data-resume hidden>
+      <button type="button" aria-describedby="rust-next-topic">Continue learning</button>
+      <span id="rust-next-topic" data-next-label></span>
     </div>
   </div>
   <noscript>Enable JavaScript to use the checklist and track your progress.</noscript>
@@ -333,10 +418,10 @@
     </li>
   </template>
   <template data-topic-template>
-    <label class="roadmap-topic cursor-interaction">
-      <input type="checkbox">
-      <span class="roadmap-topic-name"></span>
-    </label>
+    <div class="roadmap-topic">
+      <label class="roadmap-topic-toggle"><input type="checkbox"></label>
+      <a class="roadmap-topic-name"></a>
+    </div>
   </template>
   <script type="application/json" data-outline>[["01 – Introduction", ["Overview", "Environment Setup", "First Rust Program"]], ["02 – Programming Fundamentals", ["Variables", "Mutability", "Constants", "Shadowing", "Data Types", "Type Inference", "Type Conversion", "Operators", "Functions", "Expressions and Statements", "Comments", "Control Flow"]], ["03 – Memory Management Fundamentals", ["Stack memory", "Heap memory", "Memory allocation", "Memory deallocation", "Pointers", "Garbage collection", "Dangling pointers", "Memory leaks", "Memory safety"]], ["04 – Ownership System", ["Ownership rules", "Variable scope", "Move semantics", "Copy semantics", "Clone", "Ownership with functions", "Return values and ownership", "Drop"]], ["05 – Borrowing and References", ["References", "Immutable borrowing", "Mutable borrowing", "Borrowing rules", "Borrow checker", "Dangling references", "Dereferencing", "Slices"]], ["06 – Structs and Enums", ["Structs", "Tuple structs", "Unit-like structs", "Methods", "Associated functions", "Implementation blocks (impl)", "Enums", "Option", "Result"]], ["07 – Pattern Matching", ["Match expressions", "If let", "While let", "Let else", "Destructuring", "Match guards", "Exhaustive matching"]], ["08 – Collections and Strings", ["Arrays", "Tuples", "Vectors", "String vs Str", "HashMap", "HashSet", "BTreeMap", "VecDeque", "UTF-8 encoding"]], ["09 – Error Handling", ["Recoverable errors", "Unrecoverable errors", "Panic", "Result", "Option", "Unwrap and Expect", "Error propagation", "Custom errors", "Thiserror", "Anyhow"]], ["10 – Project Organization", ["Packages", "Crates", "Modules", "Module tree", "Public and private visibility", "Use keyword", "Library crates", "Binary crates", "Cargo.toml", "Cargo.lock", "Dependencies", "Features", "Cargo workspaces"]], ["11 – Generics, Traits and Lifetimes", ["Generic functions", "Generic structs", "Generic enums", "Traits", "Trait implementation", "Trait bounds", "Default implementations", "Associated types", "Lifetime annotations", "Lifetime elision", "Static lifetime", "Trait objects", "Static vs Dynamic dispatch"]], ["12 – Functional Programming", ["Closures", "Fn, FnMut and FnOnce", "Iterators", "Iterator adapters", "Map", "Filter", "Fold", "Collect", "Lazy evaluation", "Zero-cost abstractions"]], ["13 – Smart Pointers", ["Box", "Rc", "Arc", "RefCell", "Cell", "Weak", "Cow", "Deref trait", "Drop trait", "Interior mutability", "Reference cycles"]], ["14 – Concurrency and Parallelism", ["Processes vs Threads", "Multithreading", "Thread spawning", "Move closures", "Message passing", "Channels", "Shared state", "Mutex", "RwLock", "Send and Sync traits", "Atomics", "Race conditions", "Deadlocks", "Rayon"]], ["15 – Asynchronous Programming", ["Synchronous vs Asynchronous", "Blocking vs Non-blocking", "Async and Await", "Futures", "Executors", "Async runtimes", "Tokio", "Async tasks", "Async channels", "Streams", "Cancellation", "Pin and Unpin", "Async error handling"]], ["16 – Advanced Rust", ["Unsafe Rust", "Raw pointers", "Unsafe functions", "Advanced traits", "Associated constants", "Const generics", "Type aliases", "Type-state pattern", "Higher-ranked trait bounds", "Generic associated types", "Declarative macros", "Procedural macros", "Foreign Function Interface (FFI)", "no_std Rust"]], ["17 – Testing and Debugging", ["Unit testing", "Integration testing", "Documentation testing", "Property-based testing", "Mocking", "Fuzz testing", "Benchmarking", "Debugging", "Logging", "Tracing", "Code coverage"]], ["18 – Professional Rust Tooling", ["Cargo commands", "Rustfmt", "Clippy", "Rustdoc", "Cargo Audit", "Cargo Deny", "Miri", "Compiler diagnostics", "Build profiles", "Cross-compilation", "Publishing crates"]], ["19 – Data Structures and Algorithms", ["Time and space complexity", "Searching algorithms", "Sorting algorithms", "Linked lists", "Stacks", "Queues", "Trees", "Graphs", "Recursion", "Dynamic programming"]], ["20 – Backend and Web Development", ["HTTP fundamentals", "REST APIs", "Axum", "Actix Web", "Routing", "Middleware", "Serialization (Serde)", "Database integration", "Authentication", "Authorization", "WebSockets", "gRPC", "Caching", "Background jobs"]], ["21 – Software Architecture", ["SOLID principles", "Design patterns", "Dependency injection", "Layered architecture", "Clean architecture", "Hexagonal architecture", "Domain-driven design", "Modular monolith", "Microservices", "Event-driven architecture"]], ["22 – Performance Engineering", ["Memory optimization", "CPU optimization", "Allocation optimization", "Cache locality", "Profiling", "Flame graphs", "Benchmark analysis", "SIMD", "Release optimization", "Binary size optimization"]], ["23 – Security Engineering", ["Memory safety guarantees", "Input validation", "Secure coding practices", "Cryptography fundamentals", "Secrets management", "Dependency vulnerabilities", "Supply chain security", "Unsafe code auditing"]], ["24 – Production and DevOps", ["Environment configuration", "Docker", "CI and CD", "GitHub Actions", "Cloud deployment", "Kubernetes", "Observability", "Health checks", "Graceful shutdown", "Production monitoring"]], ["25 – Specialization Paths", ["Backend engineering", "Systems programming", "Network programming", "Embedded systems", "Operating systems", "CLI applications", "Desktop applications (Tauri)", "WebAssembly (WASM)", "Blockchain", "FinTech infrastructure", "Game development", "Cybersecurity", "AI and ML Infrastructure"]], ["26 – Practical Projects", ["Beginner", "Intermediate", "Advanced", "Professional"]]]</script>
 </main>
@@ -368,38 +453,61 @@
     const percentage = root.querySelector("[data-percentage]");
     const topicsTotal = root.querySelector("[data-topics-total]");
     const chaptersTotal = root.querySelector("[data-chapters-total]");
+    const resume = root.querySelector("[data-resume]");
+    const resumeButton = resume.querySelector("button");
+    const nextLabel = resume.querySelector("[data-next-label]");
+    const lessonBase = "https://github.com/afnath-ahamed/Rust/blob/main/";
     const storageKey = "afnath-ahamed/rust-roadmap/v1";
     const allIds = new Set();
     let completed = new Set();
+    let nextTopic = null;
 
     const sections = chapters.map(([title, topics], chapterIndex) => {
       const branch = chapterTemplate.content.firstElementChild.cloneNode(true);
       const chapter = branch.querySelector("details");
+      const summary = chapter.querySelector("summary");
       const list = chapter.querySelector(".roadmap-topics");
       const count = chapter.querySelector(".roadmap-count");
       const bar = chapter.querySelector(".progress-bar");
       chapter.querySelector(".roadmap-chapter-title").textContent = title;
       list.setAttribute("aria-label", title);
+      const chapterPath = encodeURIComponent(title.replace(" – ", " - "));
       const inputs = topics.map((topic, topicIndex) => {
-        const label = topicTemplate.content.firstElementChild.cloneNode(true);
-        const input = label.querySelector("input");
+        const row = topicTemplate.content.firstElementChild.cloneNode(true);
+        const input = row.querySelector("input");
+        const lesson = row.querySelector("a");
+        const folder = encodeURIComponent(`${String(topicIndex + 1).padStart(2, "0")} - ${topic}`);
         input.value = `${chapterIndex + 1}.${topicIndex + 1}`;
+        input.setAttribute("aria-label", `Mark ${topic} complete`);
         allIds.add(input.value);
-        label.querySelector(".roadmap-topic-name").textContent = topic;
-        list.append(label);
+        lesson.textContent = topic;
+        lesson.href = `${lessonBase}${chapterPath}/${folder}/README.md`;
+        list.append(row);
         return input;
       });
       sectionList.append(branch);
-      return { chapter, count, bar, inputs };
+      return { branch, summary, count, bar, inputs };
     });
 
     function updateProgress() {
       let finishedSections = 0;
-      for (const { chapter, inputs, count, bar } of sections) {
+      nextTopic?.removeAttribute("data-next");
+      nextTopic = null;
+      for (const { branch, summary, inputs, count, bar } of sections) {
         const finishedTopics = inputs.filter(input => completed.has(input.value)).length;
         const isDone = finishedTopics === inputs.length;
+        const isCurrent = !nextTopic && !isDone;
         finishedSections += Number(isDone);
-        chapter.toggleAttribute("data-complete", isDone);
+        branch.toggleAttribute("data-complete", isDone);
+        branch.toggleAttribute("data-current", isCurrent);
+        if (isCurrent) {
+          const nextInput = inputs.find(input => !completed.has(input.value));
+          nextTopic = nextInput.closest(".roadmap-topic").querySelector("a");
+          nextTopic.setAttribute("data-next", "");
+          summary.setAttribute("aria-current", "step");
+        } else {
+          summary.removeAttribute("aria-current");
+        }
         count.textContent = isDone ? "Complete" : `${finishedTopics} / ${inputs.length}`;
         if (isDone) {
           count.removeAttribute("aria-label");
@@ -416,6 +524,8 @@
       percentage.textContent = `${Number(percent.toFixed(1))}%`;
       topicsTotal.textContent = `${completed.size} of ${allIds.size} topics complete`;
       chaptersTotal.textContent = `${finishedSections} of ${sections.length} sections complete`;
+      resume.hidden = !nextTopic;
+      nextLabel.textContent = nextTopic ? `Next up · ${nextTopic.textContent}` : "";
     }
 
     function load() {
@@ -449,9 +559,14 @@
       updateProgress();
       save();
     });
+    resumeButton.addEventListener("click", () => {
+      if (!nextTopic) return;
+      nextTopic.closest("details").open = true;
+      nextTopic.focus({ preventScroll: true });
+      nextTopic.scrollIntoView({ block: "center" });
+    });
     load();
-    const nextSection = sections.find(({ inputs }) => inputs.some(input => !input.checked));
-    if (nextSection) nextSection.chapter.open = true;
+    if (nextTopic) nextTopic.closest("details").open = true;
   })();
 </script>
 </body>
