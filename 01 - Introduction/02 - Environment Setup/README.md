@@ -189,3 +189,7 @@ The extension adds essential Rust development features to VS Code, including:
 ## Next step
 
 Continue with [Your First Rust Program](<../03 - First Rust Program/README.md>) to build and run a complete Cargo project.
+
+---
+
+[← Previous: Overview](<../01 - Overview/README.md>) | [Back to Introduction](../README.md) | [Next: First Rust Program →](<../03 - First Rust Program/README.md>)

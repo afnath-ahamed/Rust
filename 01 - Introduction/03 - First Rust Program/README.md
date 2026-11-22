@@ -104,3 +104,7 @@ Hello, Rust!
 ## Next step
 
 Continue with [Programming Fundamentals](<../../02 - Programming Fundamentals/README.md>) to learn variables, data types, functions, and control flow.
+
+---
+
+[← Previous: Environment Setup](<../02 - Environment Setup/README.md>) | [Back to Introduction](../README.md) | [Next: Programming Fundamentals →](<../../02 - Programming Fundamentals/README.md>)

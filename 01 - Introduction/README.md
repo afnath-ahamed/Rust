@@ -9,3 +9,7 @@ This section establishes the Rust fundamentals needed before studying the langua
 3. [Your First Rust Program](<./03 - First Rust Program/README.md>)
 
 After completing these lessons, continue with [Programming Fundamentals](<../02 - Programming Fundamentals/README.md>).
+
+---
+
+[Next: Programming Fundamentals →](<../02 - Programming Fundamentals/README.md>)
