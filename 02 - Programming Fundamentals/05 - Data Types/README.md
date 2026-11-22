@@ -93,8 +93,6 @@ let numbers: [i32; 5] = [10, 20, 30, 40, 50];
 println!("{}", numbers[0]); // 10
 ```
 
-![Array fixed length and indexing](array-overview.png)
-
 Array indexing starts at zero. An invalid index causes a runtime panic, so validate dynamic indexes when necessary.
 
 ## 3. Strings
