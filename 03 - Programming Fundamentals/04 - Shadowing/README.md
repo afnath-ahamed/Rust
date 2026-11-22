@@ -140,4 +140,4 @@ count += 1; // Same binding, updated value
 
 ---
 
-[← Previous: Constants](<../03 - Constants/README.md>) | [Back to Language Basics](../README.md) | [Next: Data Types →](<../05 - Data Types/README.md>)
+[← Previous: Constants](<../03 - Constants/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Data Types →](<../05 - Data Types/README.md>)

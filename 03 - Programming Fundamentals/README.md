@@ -1,6 +1,6 @@
-# 02 — Language Basics
+# 03 — Programming Fundamentals
 
-This section introduces the core Rust language features. Follow the lessons in order and practice each example as you go.
+This section introduces Rust programming fundamentals. Follow the lessons in order and practice each example as you go.
 
 ## Lessons
 

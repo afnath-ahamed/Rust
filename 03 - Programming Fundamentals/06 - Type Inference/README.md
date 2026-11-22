@@ -100,4 +100,4 @@ See [Type Conversion](<../07 - Type Conversion/README.md>) for casts, parsing, a
 
 ---
 
-[← Previous: Data Types](<../05 - Data Types/README.md>) | [Back to Language Basics](../README.md) | [Next: Type Conversion →](<../07 - Type Conversion/README.md>)
+[← Previous: Data Types](<../05 - Data Types/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Type Conversion →](<../07 - Type Conversion/README.md>)

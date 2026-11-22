@@ -186,4 +186,4 @@ This lesson was informed by the [W3Schools Rust Functions tutorial](https://www.
 
 ---
 
-[← Previous: Operators](<../08 - Operators/README.md>) | [Back to Language Basics](../README.md) | [Next: Expressions and Statements →](<../10 - Expressions and Statements/README.md>)
+[← Previous: Operators](<../08 - Operators/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Expressions and Statements →](<../10 - Expressions and Statements/README.md>)

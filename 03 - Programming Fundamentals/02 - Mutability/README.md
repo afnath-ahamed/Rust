@@ -133,4 +133,4 @@ Shadowing can change the type. Reassignment through `mut` cannot change the type
 
 ---
 
-[← Previous: Variables](<../01 - Variables/README.md>) | [Back to Language Basics](../README.md) | [Next: Constants →](<../03 - Constants/README.md>)
+[← Previous: Variables](<../01 - Variables/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Constants →](<../03 - Constants/README.md>)

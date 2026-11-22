@@ -103,4 +103,4 @@ let message = format!("Count: {number}");
 
 ---
 
-[← Previous: Type Inference](<../06 - Type Inference/README.md>) | [Back to Language Basics](../README.md) | [Next: Operators →](<../08 - Operators/README.md>)
+[← Previous: Type Inference](<../06 - Type Inference/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Operators →](<../08 - Operators/README.md>)

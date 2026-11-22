@@ -60,4 +60,4 @@ This lesson was informed by the [W3Schools Rust Variables tutorial](https://www.
 
 ---
 
-[Back to Language Basics](../README.md) | [Next: Mutability →](<../02 - Mutability/README.md>)
+[Back to Programming Fundamentals](../README.md) | [Next: Mutability →](<../02 - Mutability/README.md>)

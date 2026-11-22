@@ -157,4 +157,4 @@ This lesson was informed by the [W3Schools Rust Operators tutorial](https://www.
 
 ---
 
-[← Previous: Type Conversion](<../07 - Type Conversion/README.md>) | [Back to Language Basics](../README.md) | [Next: Functions →](<../09 - Functions/README.md>)
+[← Previous: Type Conversion](<../07 - Type Conversion/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Functions →](<../09 - Functions/README.md>)

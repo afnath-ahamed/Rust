@@ -132,4 +132,4 @@ This lesson was informed by the [W3Schools Rust Data Types tutorial](https://www
 
 ---
 
-[← Previous: Shadowing](<../04 - Shadowing/README.md>) | [Back to Language Basics](../README.md) | [Next: Type Inference →](<../06 - Type Inference/README.md>)
+[← Previous: Shadowing](<../04 - Shadowing/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Type Inference →](<../06 - Type Inference/README.md>)

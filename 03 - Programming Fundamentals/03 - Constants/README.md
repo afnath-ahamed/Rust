@@ -114,4 +114,4 @@ This lesson was informed by the [W3Schools Rust Constants tutorial](https://www.
 
 ---
 
-[← Previous: Mutability](<../02 - Mutability/README.md>) | [Back to Language Basics](../README.md) | [Next: Shadowing →](<../04 - Shadowing/README.md>)
+[← Previous: Mutability](<../02 - Mutability/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Shadowing →](<../04 - Shadowing/README.md>)

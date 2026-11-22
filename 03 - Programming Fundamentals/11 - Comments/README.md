@@ -94,4 +94,4 @@ This lesson was informed by the [W3Schools Rust Comments tutorial](https://www.w
 
 ---
 
-[← Previous: Expressions and Statements](<../10 - Expressions and Statements/README.md>) | [Back to Language Basics](../README.md) | [Next: Control Flow →](<../12 - Control Flow/README.md>)
+[← Previous: Expressions and Statements](<../10 - Expressions and Statements/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Control Flow →](<../12 - Control Flow/README.md>)

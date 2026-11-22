@@ -8,4 +8,4 @@ This section establishes the Rust fundamentals needed before studying the langua
 2. [Environment Setup](<./02 - Environment Setup/README.md>)
 3. [Your First Rust Program](<./03 - First Rust Program/README.md>)
 
-After completing these lessons, continue with [Language Basics](<../02 - Language Basics/README.md>).
+After completing these lessons, continue with [Programming Fundamentals](<../03 - Programming Fundamentals/README.md>).

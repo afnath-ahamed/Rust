@@ -26,9 +26,9 @@ This repository organizes my Rust study notes, runnable examples, terminal outpu
 - [Environment setup](<./01 - Introduction/02 - Environment Setup/README.md>)
 - [Your first Rust program](<./01 - Introduction/03 - First Rust Program/README.md>)
 
-### 02 — Language Basics
+### 03 — Programming Fundamentals
 
-- [Language basics roadmap](<./02 - Language Basics/README.md>)
+- [Programming fundamentals roadmap](<./03 - Programming Fundamentals/README.md>)
 
 ## Repository structure
 
@@ -38,7 +38,7 @@ Rust/
 │   ├── 01 - Overview/
 │   ├── 02 - Environment Setup/
 │   └── 03 - First Rust Program/
-├── 02 - Language Basics/
+├── 03 - Programming Fundamentals/
 ├── assets/
 └── README.md
 ```
