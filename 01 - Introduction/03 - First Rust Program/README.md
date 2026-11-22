@@ -103,4 +103,4 @@ Hello, Rust!
 
 ## Next step
 
-Continue with [Programming Fundamentals](<../../03 - Programming Fundamentals/README.md>) to learn variables, data types, functions, and control flow.
+Continue with [Programming Fundamentals](<../../02 - Programming Fundamentals/README.md>) to learn variables, data types, functions, and control flow.

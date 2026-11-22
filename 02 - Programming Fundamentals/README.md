@@ -1,4 +1,4 @@
-# 03 — Programming Fundamentals
+# 02 — Programming Fundamentals
 
 This section introduces Rust programming fundamentals. Follow the lessons in order and practice each example as you go.
 
