@@ -69,13 +69,15 @@ Compound types group multiple values into one value.
 
 ### 2.1 Tuples
 
-A tuple has a fixed length and may contain different types. Access elements by position, starting at zero, or destructure it:
+A tuple stores a fixed number of values and may contain different types. You can annotate its type, access elements by position starting at zero, or destructure it:
 
 ```rust
-let profile: (&str, u8, bool) = ("Afnath", 25, true);
-println!("{}", profile.0);
+let user: (i32, &str, bool) = (25, "Alex", true);
 
-let (name, age, active) = profile;
+println!("{}", user.0); // 25
+println!("{}", user.1); // Alex
+
+let (age, name, active) = user;
 ```
 
 ### 2.2 Arrays
