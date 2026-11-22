@@ -66,6 +66,24 @@ match result {
 }
 ```
 
+The equivalent `TryInto` form converts from the source value's perspective:
+
+```rust
+use std::convert::TryInto;
+
+let value: u16 = 100;
+let byte: Result<u8, _> = value.try_into();
+```
+
+Conversions that exceed the destination range return an error instead of silently changing the value:
+
+```rust
+let value: i32 = 300;
+let result: Result<u8, _> = value.try_into();
+
+assert!(result.is_err()); // 300 exceeds the u8 range
+```
+
 Use `?` to propagate a conversion error from a function that returns a compatible `Result`.
 
 ## 5. Strings and values
@@ -84,6 +102,14 @@ Formatting is useful when combining several values into text:
 ```rust
 let message = format!("Count: {number}");
 ```
+
+| Method | Purpose |
+| --- | --- |
+| `as` | Explicit primitive cast that may lose information |
+| `parse()` | Convert text into another type and return a `Result` |
+| `to_string()` | Convert a value into text |
+| `From` / `Into` | Infallible conversion between compatible types |
+| `TryFrom` / `TryInto` | Checked conversion that may fail |
 
 ## 6. Choosing a conversion
 
