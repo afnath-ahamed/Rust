@@ -7,28 +7,55 @@
   <title>Rust Learning Roadmap</title>
 <style>
   body {
+    --ink: #15140f;
+    --yellow: #ffd53d;
     margin: 0;
-    background: #15140f;
+    background: var(--ink);
     color: #fff8dc;
     font-family: system-ui, sans-serif;
+  }
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+  body::before {
+    opacity: 0.38;
+    background:
+      radial-gradient(circle at 8% 24%, #ffd53d 0 1px, transparent 3px),
+      radial-gradient(circle at 21% 63%, #ffd53d 0 1px, transparent 3px),
+      radial-gradient(circle at 37% 37%, #ffd53d 0 1px, transparent 3px),
+      radial-gradient(circle at 61% 78%, #ffd53d 0 1px, transparent 3px),
+      radial-gradient(circle at 79% 46%, #ffd53d 0 1px, transparent 3px),
+      radial-gradient(circle at 94% 72%, #ffd53d 0 1px, transparent 3px);
+  }
+  body::after {
+    opacity: 0.24;
+    background:
+      radial-gradient(circle at 12% 86%, #ffd53d 0 1px, transparent 4px),
+      radial-gradient(circle at 29% 49%, #ffd53d 0 1px, transparent 4px),
+      radial-gradient(circle at 43% 16%, #ffd53d 0 1px, transparent 4px),
+      radial-gradient(circle at 67% 59%, #ffd53d 0 1px, transparent 4px),
+      radial-gradient(circle at 85% 29%, #ffd53d 0 1px, transparent 4px);
   }
   #rust-learning-checklist {
     max-inline-size: 60rem;
     margin-inline: auto;
   }
   #rust-learning-checklist {
-    --ink: #15140f;
     --panel: #201f18;
-    --yellow: #ffd53d;
     --text: #fff8dc;
     --muted-text: #c5bfa8;
     --line: #4a432e;
     color-scheme: dark;
     box-sizing: border-box;
+    position: relative;
+    z-index: 1;
     display: grid;
     gap: clamp(1rem, 3vw, 1.75rem);
     padding: clamp(0.75rem, 3vw, 1.75rem);
-    background: var(--ink);
     color: var(--text);
     font: 1rem/1.5 system-ui, sans-serif;
   }
@@ -227,9 +254,19 @@
     text-decoration: line-through;
   }
   @media (prefers-reduced-motion: no-preference) {
+    body::before {
+      animation: speck-drift 26s ease-in-out infinite alternate;
+    }
+    body::after {
+      animation: speck-drift 34s ease-in-out infinite alternate-reverse;
+    }
     #rust-learning-checklist .progress-bar {
       transition: width 160ms ease-out;
     }
+  }
+  @keyframes speck-drift {
+    from { transform: translate(-8px, 12px); }
+    to { transform: translate(12px, -18px); }
   }
   @media (max-width: 700px) {
     #rust-learning-checklist .roadmap-branch {
