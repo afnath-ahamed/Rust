@@ -77,6 +77,7 @@ let user: (i32, &str, bool) = (25, "Alex", true);
 println!("{}", user.0); // 25
 println!("{}", user.1); // Alex
 
+// Tuple destructuring
 let (age, name, active) = user;
 ```
 
