@@ -2,6 +2,8 @@
 
 Shadowing creates a new binding with the same name as an earlier binding. The new binding replaces the old name in the current scope and may have a different value or type.
 
+![Shadowing creates a new binding](shadowing-overview.png)
+
 ## Contents
 
 1. [Basic shadowing](#1-basic-shadowing)
