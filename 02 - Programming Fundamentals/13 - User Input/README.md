@@ -9,7 +9,6 @@
 5. [Multiple inputs](#5-multiple-inputs)
 6. [`print!()` versus `println!()`](#6-print-versus-println)
 7. [Complete example](#7-complete-example--add-two-numbers)
-- [Key points to remember](#key-points-to-remember)
 
 ## 1. What is user input?
 
