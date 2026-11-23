@@ -20,6 +20,8 @@ Control flow determines which code runs and how often it runs. Rust provides con
 
 An `if` expression runs a block when its condition is `true`. The condition must be a `bool`; Rust does not treat numbers as truth values:
 
+![If and else control flow](if-else-flow.png)
+
 ```rust
 let score = 82;
 
