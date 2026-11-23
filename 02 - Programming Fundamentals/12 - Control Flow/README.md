@@ -120,6 +120,22 @@ for name in names {
 }
 ```
 
+### Nested `for` loops
+
+A nested loop runs the inner loop completely for each iteration of the outer loop:
+
+![Nested for-loop flow](nested-for-loop.png)
+
+```rust
+for row in 1..=2 {
+    for column in 1..=3 {
+        println!("row {row}, column {column}");
+    }
+}
+```
+
+By default, `break` and `continue` affect the nearest loop. Use a loop label when control must target an outer loop.
+
 Use `.iter()` to borrow collection elements, `.iter_mut()` to modify them, or `.into_iter()` when consuming the collection is intended.
 
 ## 7. `break` and `continue`
