@@ -125,6 +125,8 @@ Use `.iter()` to borrow collection elements, `.iter_mut()` to modify them, or `.
 - `break` exits the nearest loop.
 - `continue` skips the rest of the current iteration and starts the next one.
 
+![Break and continue loop flow](loop-control-flow.png)
+
 ```rust
 for number in 1..=10 {
     if number % 2 == 0 {
