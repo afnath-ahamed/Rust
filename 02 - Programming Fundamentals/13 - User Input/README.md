@@ -2,16 +2,16 @@
 
 ## Contents
 
-- [What is user input?](#what-is-user-input)
-- [Basic user input](#basic-user-input)
-- [Type conversion with `parse()`](#type-conversion-with-parse)
-- [Error handling](#error-handling)
-- [Multiple inputs](#multiple-inputs)
-- [`print!()` versus `println!()`](#print-versus-println)
-- [Complete example](#complete-example--add-two-numbers)
+1. [What is user input?](#1-what-is-user-input)
+2. [Basic user input](#2-basic-user-input)
+3. [Type conversion with `parse()`](#3-type-conversion-with-parse)
+4. [Error handling](#4-error-handling)
+5. [Multiple inputs](#5-multiple-inputs)
+6. [`print!()` versus `println!()`](#6-print-versus-println)
+7. [Complete example](#7-complete-example--add-two-numbers)
 - [Key points to remember](#key-points-to-remember)
 
-## What is user input?
+## 1. What is user input?
 
 User input allows a Rust program to receive data from the user during execution.
 
@@ -24,7 +24,7 @@ User input allows a Rust program to receive data from the user during execution.
 
 ![User input flow](user-input-flow.png)
 
-## Basic user input
+## 2. Basic user input
 
 ```rust
 use std::io;
@@ -46,7 +46,7 @@ fn main() {
 | `trim()` | Removes surrounding whitespace and the newline. |
 | `expect()` | Stops with a useful message if reading fails. |
 
-## Type conversion with `parse()`
+## 3. Type conversion with `parse()`
 
 Input is text. Convert it explicitly:
 
@@ -58,7 +58,7 @@ let age: u32 = input.trim().parse().expect("Invalid age");
 
 Common types: `i32`, `u32`, `f32`, `f64`, and `bool`.
 
-## Error handling
+## 4. Error handling
 
 Parsing returns a `Result`:
 
@@ -75,7 +75,7 @@ match input.trim().parse::<i32>() {
 | `expect("message")` | Returns the value or panics with a message. |
 | `match` | Handles success and failure explicitly. |
 
-## Multiple inputs
+## 5. Multiple inputs
 
 Clear and reuse the same buffer:
 
@@ -93,7 +93,7 @@ let numbers: Vec<i32> = input
     .collect();
 ```
 
-## `print!()` versus `println!()`
+## 6. `print!()` versus `println!()`
 
 | Macro | Purpose |
 | --- | --- |
@@ -110,7 +110,7 @@ print!("Enter your name: ");
 io::stdout().flush().unwrap();
 ```
 
-## Complete example — add two numbers
+## 7. Complete example — add two numbers
 
 ```rust
 use std::io;
