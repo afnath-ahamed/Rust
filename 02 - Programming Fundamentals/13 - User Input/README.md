@@ -9,6 +9,8 @@ User input allows a Rust program to receive data from the user during execution.
 - `stdout()` — writes output to the terminal.
 - **Important:** `read_line()` reads input as a `String`, even when the user enters a number.
 
+### Basic input flow
+
 ![User input flow](user-input-flow.png)
 
 ## 2. Basic user input
