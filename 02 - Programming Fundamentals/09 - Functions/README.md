@@ -59,17 +59,6 @@ Write `-> Type` after the parameter list. The final expression is returned when 
 
 ![Function syntax and return expression](function-syntax.png)
 
-```rust
-fn add(a: i32, b: i32) -> i32 {
-    a + b
-}
-
-fn main() {
-    let result = add(10, 20);
-    println!("{result}");
-}
-```
-
 An explicit `return` is useful when returning early. For the final value, the idiomatic Rust style is an expression without a semicolon:
 
 ```rust
