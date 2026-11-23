@@ -107,6 +107,8 @@ Make sure the loop body can eventually make the condition false.
 
 `for` iterates over a collection or range:
 
+![For loop flow](for-loop-flow.png)
+
 ```rust
 for number in 1..=3 {
     println!("{number}");
