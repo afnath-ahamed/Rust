@@ -1,8 +1,15 @@
 # User Input (`std::io`)
 
-User input lets a Rust program receive data from the terminal. `read_line()` always reads into a `String`; trim and parse it before using it as another type.
+## 1. What is user input?
 
-## 1. Basic input
+User input allows a Rust program to receive data from the user during execution.
+
+- `std::io` — standard input/output module.
+- `stdin()` — reads input from the terminal.
+- `stdout()` — writes output to the terminal.
+- **Important:** `read_line()` reads input as a `String`, even when the user enters a number.
+
+## 2. Basic user input
 
 ```rust
 use std::io;
@@ -18,7 +25,8 @@ fn main() {
 | --- | --- |
 | `use std::io;` | Imports standard input/output. |
 | `String::new()` | Creates an empty string. |
-| `mut` / `&mut` | Allows the input buffer to be modified. |
+| `mut` | Allows the input buffer to be modified. |
+| `&mut input` | Passes a mutable reference. |
 | `read_line()` | Reads one line from the terminal. |
 | `trim()` | Removes surrounding whitespace and the newline. |
 | `expect()` | Stops with a useful message if reading fails. |
