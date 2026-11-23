@@ -1,17 +1,6 @@
 # User Input (`std::io`)
 
-## Contents
-
-1. [What is user input?](#1-what-is-user-input)
-2. [Basic user input](#2-basic-user-input)
-3. [Type conversion with `parse()`](#3-type-conversion-with-parse)
-4. [Error handling](#4-error-handling)
-5. [Multiple inputs](#5-multiple-inputs)
-6. [`print!()` versus `println!()`](#6-print-versus-println)
-7. [Complete example](#7-complete-example--add-two-numbers)
-8. [Key points to remember](#8-key-points-to-remember)
-
-## 1. What is user input?
+## Contents`r`n`r`n- [What is user input?](#what-is-user-input)`r`n- [Basic user input](#basic-user-input)`r`n- [Type conversion with `parse()`](#type-conversion-with-parse)`r`n- [Error handling](#error-handling)`r`n- [Multiple inputs](#multiple-inputs)`r`n- [`print!()` versus `println!()`](#print-versus-println)`r`n- [Complete example](#complete-example--add-two-numbers)`r`n- [Key points to remember](#key-points-to-remember)`r`n## 1. What is user input?
 
 User input allows a Rust program to receive data from the user during execution.
 
@@ -24,7 +13,7 @@ User input allows a Rust program to receive data from the user during execution.
 
 ![User input flow](user-input-flow.png)
 
-## 2. Basic user input
+## Basic user input
 
 ```rust
 use std::io;
@@ -46,7 +35,7 @@ fn main() {
 | `trim()` | Removes surrounding whitespace and the newline. |
 | `expect()` | Stops with a useful message if reading fails. |
 
-## 3. Type conversion with `parse()`
+## Type conversion with `parse()`
 
 Input is text. Convert it explicitly:
 
@@ -58,7 +47,7 @@ let age: u32 = input.trim().parse().expect("Invalid age");
 
 Common types: `i32`, `u32`, `f32`, `f64`, and `bool`.
 
-## 4. Error handling
+## Error handling
 
 Parsing returns a `Result`:
 
@@ -75,7 +64,7 @@ match input.trim().parse::<i32>() {
 | `expect("message")` | Returns the value or panics with a message. |
 | `match` | Handles success and failure explicitly. |
 
-## 5. Multiple inputs
+## Multiple inputs
 
 Clear and reuse the same buffer:
 
@@ -93,7 +82,7 @@ let numbers: Vec<i32> = input
     .collect();
 ```
 
-## 6. `print!()` versus `println!()`
+## `print!()` versus `println!()`
 
 | Macro | Purpose |
 | --- | --- |
@@ -110,7 +99,7 @@ print!("Enter your name: ");
 io::stdout().flush().unwrap();
 ```
 
-## 7. Complete example — add two numbers
+## Complete example — add two numbers
 
 ```rust
 use std::io;
@@ -133,7 +122,7 @@ fn main() {
 
 **Output:** `10 + 20 = 30` (shown as `Sum = 30`).
 
-## 8. Key points to remember
+## Key points to remember
 
 - `read_line()` reads terminal input as text.
 - Use `trim()` before parsing.
