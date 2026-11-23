@@ -92,6 +92,8 @@ Unlike `while` and `for`, a `loop` is useful when termination depends on logic i
 
 `while` repeats while its boolean condition remains true:
 
+![While loop flow](while-loop-flow.png)
+
 ```rust
 let mut count = 3;
 
