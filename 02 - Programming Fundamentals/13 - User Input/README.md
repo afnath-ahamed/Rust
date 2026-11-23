@@ -1,0 +1,118 @@
+# User Input (`std::io`)
+
+User input lets a Rust program receive data from the terminal. `read_line()` always reads into a `String`; trim and parse it before using it as another type.
+
+## 1. Basic input
+
+```rust
+use std::io;
+
+fn main() {
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read input");
+    println!("Input: {}", input.trim());
+}
+```
+
+| Component | Purpose |
+| --- | --- |
+| `use std::io;` | Imports standard input/output. |
+| `String::new()` | Creates an empty string. |
+| `mut` / `&mut` | Allows the input buffer to be modified. |
+| `read_line()` | Reads one line from the terminal. |
+| `trim()` | Removes surrounding whitespace and the newline. |
+| `expect()` | Stops with a useful message if reading fails. |
+
+## 2. Type conversion with `parse()`
+
+Input is text. Convert it explicitly:
+
+```rust
+let age: u32 = input.trim().parse().expect("Invalid age");
+```
+
+Flow: `String` → `trim()` → `parse()` → typed value. Common types include `i32`, `u32`, `f32`, `f64`, and `bool`.
+
+## 3. Error handling
+
+Parsing returns a `Result`:
+
+```rust
+match input.trim().parse::<i32>() {
+    Ok(number) => println!("Number: {number}"),
+    Err(_) => println!("Invalid input"),
+}
+```
+
+| Method | Behavior |
+| --- | --- |
+| `unwrap()` | Returns the value or panics. |
+| `expect("message")` | Returns the value or panics with a message. |
+| `match` | Handles success and failure explicitly. |
+
+## 4. Multiple inputs
+
+Clear and reuse the same buffer:
+
+```rust
+input.clear();
+io::stdin().read_line(&mut input).unwrap();
+```
+
+Read space-separated values:
+
+```rust
+let numbers: Vec<i32> = input
+    .split_whitespace()
+    .map(|value| value.parse().expect("Invalid number"))
+    .collect();
+```
+
+## 5. `print!()` versus `println!()`
+
+`print!()` writes without a newline; `println!()` adds one. Flush buffered output when displaying a prompt:
+
+```rust
+use std::io::{self, Write};
+
+print!("Enter your name: ");
+io::stdout().flush().unwrap();
+```
+
+## 6. Complete example
+
+```rust
+use std::io;
+
+fn main() {
+    let mut input = String::new();
+
+    println!("Enter first number:");
+    io::stdin().read_line(&mut input).unwrap();
+    let first: i32 = input.trim().parse().expect("Invalid number");
+
+    input.clear();
+    println!("Enter second number:");
+    io::stdin().read_line(&mut input).unwrap();
+    let second: i32 = input.trim().parse().expect("Invalid number");
+
+    println!("Sum = {}", first + second);
+}
+```
+
+For inputs `10` and `20`, the output is `Sum = 30`.
+
+## 7. Key points
+
+- `read_line()` reads terminal input as text.
+- Use `trim()` before parsing.
+- Use `parse()` for numeric or Boolean conversion.
+- Prefer `match` when invalid input must be handled safely.
+- Call `clear()` before reusing a `String` buffer.
+- Use a `loop` to request input repeatedly until valid.
+
+Overall flow: user input → `stdin()` → `read_line()` → `trim()` → `parse()` → processing → output.
+
+---
+
+[← Previous: Control Flow](<../12 - Control Flow/README.md>) | [Back to Programming Fundamentals](../README.md) | [Next: Memory Management Fundamentals →](<../../03 - Memory Management Fundamentals/README.md>)

@@ -16,6 +16,7 @@ This section introduces Rust programming fundamentals. Follow the lessons in ord
 10. [Expressions and Statements](<./10 - Expressions and Statements/README.md>)
 11. [Comments](<./11 - Comments/README.md>)
 12. [Control Flow](<./12 - Control Flow/README.md>)
+13. [User Input (`std::io`)](<./13 - User Input/README.md>)
 
 ## Prerequisite
 
