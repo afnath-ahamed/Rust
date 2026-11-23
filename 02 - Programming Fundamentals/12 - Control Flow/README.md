@@ -2,7 +2,7 @@
 
 Control flow determines which code runs and how often it runs. Rust provides conditional expressions, pattern matching, loops, and explicit loop-control statements.
 
-![Control Flow overview](control-flow-overview.png)
+![Control Flow overview](control-flow-map.png)
 
 ## Contents
 
