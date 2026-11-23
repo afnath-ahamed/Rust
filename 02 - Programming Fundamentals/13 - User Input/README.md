@@ -1,6 +1,17 @@
 # User Input (`std::io`)
 
-## Contents`r`n`r`n- [What is user input?](#what-is-user-input)`r`n- [Basic user input](#basic-user-input)`r`n- [Type conversion with `parse()`](#type-conversion-with-parse)`r`n- [Error handling](#error-handling)`r`n- [Multiple inputs](#multiple-inputs)`r`n- [`print!()` versus `println!()`](#print-versus-println)`r`n- [Complete example](#complete-example--add-two-numbers)`r`n- [Key points to remember](#key-points-to-remember)`r`n## 1. What is user input?
+## Contents
+
+- [What is user input?](#what-is-user-input)
+- [Basic user input](#basic-user-input)
+- [Type conversion with `parse()`](#type-conversion-with-parse)
+- [Error handling](#error-handling)
+- [Multiple inputs](#multiple-inputs)
+- [`print!()` versus `println!()`](#print-versus-println)
+- [Complete example](#complete-example--add-two-numbers)
+- [Key points to remember](#key-points-to-remember)
+
+## What is user input?
 
 User input allows a Rust program to receive data from the user during execution.
 
