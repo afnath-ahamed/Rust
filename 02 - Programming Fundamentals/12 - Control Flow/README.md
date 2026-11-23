@@ -75,6 +75,8 @@ Use `_` as a catch-all pattern when the remaining values do not need separate ha
 
 `loop` repeats its body indefinitely until it reaches `break`:
 
+![Loop flow and break condition](loop-flow.png)
+
 ```rust
 let mut attempts = 0;
 
