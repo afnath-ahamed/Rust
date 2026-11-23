@@ -35,7 +35,7 @@ fn main() {
 | `trim()` | Removes surrounding whitespace and the newline. |
 | `expect()` | Stops with a useful message if reading fails. |
 
-## 2. Type conversion with `parse()`
+## 3. Type conversion with `parse()`
 
 Input is text. Convert it explicitly:
 
@@ -43,9 +43,11 @@ Input is text. Convert it explicitly:
 let age: u32 = input.trim().parse().expect("Invalid age");
 ```
 
-Flow: `String` → `trim()` → `parse()` → typed value. Common types include `i32`, `u32`, `f32`, `f64`, and `bool`.
+**Flow:** Input (`String`) → `trim()` → `parse()` → Number (`u32`).
 
-## 3. Error handling
+Common types: `i32`, `u32`, `f32`, `f64`, and `bool`.
+
+## 4. Error handling
 
 Parsing returns a `Result`:
 
@@ -62,7 +64,7 @@ match input.trim().parse::<i32>() {
 | `expect("message")` | Returns the value or panics with a message. |
 | `match` | Handles success and failure explicitly. |
 
-## 4. Multiple inputs
+## 5. Multiple inputs
 
 Clear and reuse the same buffer:
 
@@ -80,9 +82,15 @@ let numbers: Vec<i32> = input
     .collect();
 ```
 
-## 5. `print!()` versus `println!()`
+## 6. `print!()` versus `println!()`
 
-`print!()` writes without a newline; `println!()` adds one. Flush buffered output when displaying a prompt:
+| Macro | Purpose |
+| --- | --- |
+| `print!()` | Output without a newline. |
+| `println!()` | Output with a newline. |
+| `flush()` | Ensures buffered output is displayed. |
+
+Flush buffered output when displaying a prompt:
 
 ```rust
 use std::io::{self, Write};
@@ -91,7 +99,7 @@ print!("Enter your name: ");
 io::stdout().flush().unwrap();
 ```
 
-## 6. Complete example
+## 7. Complete example — add two numbers
 
 ```rust
 use std::io;
@@ -101,26 +109,26 @@ fn main() {
 
     println!("Enter first number:");
     io::stdin().read_line(&mut input).unwrap();
-    let first: i32 = input.trim().parse().expect("Invalid number");
+    let a: i32 = input.trim().parse().unwrap();
 
     input.clear();
     println!("Enter second number:");
     io::stdin().read_line(&mut input).unwrap();
-    let second: i32 = input.trim().parse().expect("Invalid number");
+    let b: i32 = input.trim().parse().unwrap();
 
-    println!("Sum = {}", first + second);
+    println!("Sum = {}", a + b);
 }
 ```
 
-For inputs `10` and `20`, the output is `Sum = 30`.
+**Output:** `10 + 20 = 30` (shown as `Sum = 30`).
 
-## 7. Key points
+## 8. Key points to remember
 
 - `read_line()` reads terminal input as text.
 - Use `trim()` before parsing.
 - Use `parse()` for numeric or Boolean conversion.
-- Prefer `match` when invalid input must be handled safely.
-- Call `clear()` before reusing a `String` buffer.
+- Use `match` for safer error handling.
+- `read_line()` appends input; `clear()` resets the string.
 - Use a `loop` to request input repeatedly until valid.
 
 Overall flow: user input → `stdin()` → `read_line()` → `trim()` → `parse()` → processing → output.
